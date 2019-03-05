@@ -13,7 +13,7 @@ namespace DevTask1
         {
             if (args.Length == 0 || args[0].Length < 2)
             {
-                Console.WriteLine("Too little muber of arguments");
+                Console.WriteLine("Too few number of arguments");
             }
             else
             {
