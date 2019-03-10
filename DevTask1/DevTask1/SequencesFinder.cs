@@ -22,7 +22,7 @@ namespace DevTask1
         }
 
         /// <summary>
-        /// Сompares current symbol with next symbols
+        /// Compares current symbol with next symbols
         /// and displays it if they different
         /// </summary>
         public void FindSequences()
