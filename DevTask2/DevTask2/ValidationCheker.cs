@@ -52,23 +52,23 @@ namespace DevTask2
                         }
                         break;
                 }
-                if (stringToCheck[firstLetter] == '+')
-                {
-                    throw new Exception("Incor plus");
-                }
                 if (stringToCheck[i] == ' ' || i == stringToCheck.Length - 1)
                 {
                     if (vowelsCount == 0)
                     {
-                        throw new Exception("no glas");
+                        throw new Exception("Lack of vowels");
                     }
                     if (plusCount == 0 && yoCount == 0 && vowelsCount != 1)
                     {
-                        throw new Exception("no plus");
+                        throw new Exception("Lack of plus");
                     }
                     if (plusCount > 1)
                     {
-                        throw new Exception("many plus");
+                        throw new Exception("Too many pluses");
+                    }
+                    if (stringToCheck[firstLetter] == '+')
+                    {
+                        throw new Exception("Incorrect plus position");
                     }
                     for (; firstLetter <= lastLetter; firstLetter++)
                     {
@@ -77,13 +77,13 @@ namespace DevTask2
                         {
                             if (!vowelsString.Contains(stringToCheck[firstLetter - 1]))
                             {
-                                throw new Exception("Incor plus");
+                                throw new Exception("Incorrect plus position");
                             }
                             else
                             {
                                 if (yoCount > 0 && stringToCheck[firstLetter - 1] != 'ё')
                                 {
-                                    throw new Exception("Not after yo");
+                                    throw new Exception("Incorrect plus position");
                                 }
                             }
                         }
