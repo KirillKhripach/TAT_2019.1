@@ -24,9 +24,10 @@ namespace DevTask2
         }
 
         /// <summary>
-        /// Checks for validation 
+        /// Checks for number of pluses and vowels
+        /// And their correct position
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True if doesnt throw exception</returns>
         public bool Check()
         {
             int plusCount = 0, yoCount = 0, vowelsCount = 0;
@@ -72,7 +73,6 @@ namespace DevTask2
                     }
                     for (; firstLetter <= lastLetter; firstLetter++)
                     {
-                        
                         if (stringToCheck[firstLetter] == '+')
                         {
                             if (!vowelsString.Contains(stringToCheck[firstLetter - 1]))
