@@ -1,11 +1,15 @@
 ﻿namespace DevTask3
 {
+    /// <summary>
+    /// Class for junior type employee
+    /// </summary>
     class Junior : Employee
     {
-        /*public Junior()
+        public Junior()
         {
-            Salary *= 1;
-            Productivity += 15 * 0;
-        }*/
+            Salary = 250;
+            Productivity = 10;
+            Value = (double)Salary / Productivity;
+        }
     }
 }

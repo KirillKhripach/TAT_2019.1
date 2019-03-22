@@ -1,11 +1,15 @@
 ﻿namespace DevTask3
 {
-    class Middle : Employee
+    /// <summary>
+    /// Class for middle type employee
+    /// </summary>
+    class Middle : Junior
     {
         public Middle()
         {
-            Salary *= 2;
-            Productivity += 15 * 1;
+            Salary = 500;
+            Productivity = 25;
+            Value = (double)Salary / Productivity;
         }
     }
 }

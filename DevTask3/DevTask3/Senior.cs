@@ -1,11 +1,15 @@
 ﻿namespace DevTask3
 {
-    class Senior : Employee
+    /// <summary>
+    /// Class for senior type employee
+    /// </summary>
+    class Senior : Middle
     {
         public Senior()
         {
-            Salary *= 4;
-            Productivity += 15 * 3;
+            Salary = 1000;
+            Productivity = 55;
+            Value = (double)Salary / Productivity;
         }
     }
 }

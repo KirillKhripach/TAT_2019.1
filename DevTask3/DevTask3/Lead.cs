@@ -1,11 +1,15 @@
 ﻿namespace DevTask3
 {
-    class Lead : Employee
+    /// <summary>
+    /// Class for lead type employee
+    /// </summary>
+    class Lead : Senior
     {
         public Lead()
         {
-            Salary *= 6;
-            Productivity += 15 * 5;
+            Salary = 1500;
+            Productivity = 85;
+            Value = (double)Salary / Productivity;
         }
     }
 }
