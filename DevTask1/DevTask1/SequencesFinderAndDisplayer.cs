@@ -14,10 +14,6 @@ namespace DevTask1
         /// <param name="inputString">Array of strings</param>
         public SequencesFinderAndDisplayer(string[] inputString)
         {
-            if (inputString[0].Length < 2 && inputString.Length < 2)
-            {
-                throw new Exception("Wrong number of arguments");
-            }
             processedString = new StringBuilder();
             foreach (string word in inputString)
             {
@@ -26,7 +22,7 @@ namespace DevTask1
         }
 
         /// <summary>
-        /// Finds sequences by
+        /// Finds string sequences without repeated in a row elements by
         /// Comparing current symbol with next symbols
         /// </summary>
         /// <returns>List of sequences</returns>
@@ -45,7 +41,10 @@ namespace DevTask1
                         sequence.Append(processedString[j]);
                         sequences.Add(sequence.ToString());
                     }
-                    else break;
+                    else
+                    {
+                        break;
+                    }
                 }
             }
             return sequences;

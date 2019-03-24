@@ -12,7 +12,7 @@ namespace DevTask1
         {
             try
             {
-                if (args[0].Length < 2 && args.Length < 2)
+                if (args.Length < 2 && args[0].Length < 2)
                 {
                     throw new Exception("Wrong number of arguments");
                 }
