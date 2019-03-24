@@ -10,17 +10,12 @@ namespace DevTask2
         private readonly string vowelsString = "аиоуыэеёюя";
 
         /// <summary>
-        /// Constructor forms a string from array of strings
+        /// Initializes the field
         /// </summary>
-        /// <param name="inputString">Array of strings</param>
-        public ValidationCheker(string[] inputString)
+        /// <param name="inputString">StringBuilder to check</param>
+        public ValidationCheker(StringBuilder inputString)
         {
-            stringToCheck = new StringBuilder();
-            foreach (string word in inputString)
-            {
-                stringToCheck.Append(word.ToLower()).Append(" ");
-            }
-            stringToCheck.Remove(stringToCheck.Length - 1, 1);
+            stringToCheck = inputString;
         }
 
         /// <summary>
