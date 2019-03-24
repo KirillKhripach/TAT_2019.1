@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace DevTask3
 {
     /// <summary>
-    /// Abstract claas for optimizers
+    /// Abstract class for optimizers
     /// </summary>
     abstract class Optimizer
     {

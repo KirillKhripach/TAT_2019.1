@@ -4,11 +4,10 @@ using System.Collections.Generic;
 namespace DevTask3
 {
     /// <summary>
-    /// Class with data adout number of employees
+    /// Class with data about number of employees
     /// </summary>
     class Company
     {
-        List<Employee> availableEmployees;
         private int numberOfJuniors;
         private int numberOfMiddles;
         private int numberOfSeniors;
@@ -36,11 +35,11 @@ namespace DevTask3
         }
 
         /// <summary>
-        /// Cheks for sufficiency of employees and
+        /// Checks for sufficiency of employees and
         /// Displays optimized list of employees
         /// </summary>
         /// <param name="employees">Optimized list of employees</param>
-        public void CheckForAvailabilityAndDisplay(List<Employee> employees)
+        public void CheckForSufficiencyAndDisplay(List<Employee> employees)
         {
             int[] employeesAmount = new int[4];
             foreach (Employee employee in employees)

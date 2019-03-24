@@ -16,7 +16,7 @@ namespace DevTask3
                 CriterionChooser criterionChooser = new CriterionChooser();
                 Company company = new Company();
                 List<Employee> employees = company.GetEmployees(criterionChooser.Choose());
-                company.CheckForAvailabilityAndDisplay(employees);
+                company.CheckForSufficiencyAndDisplay(employees);
             }
             catch (Exception ex)
             {
