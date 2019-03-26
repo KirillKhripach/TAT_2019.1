@@ -13,7 +13,7 @@ namespace DevTask3
         /// <returns>Choosed criterion</returns>
         public Optimizer Choose()
         {
-            Console.WriteLine("Select a criterion to calculate:\n1. Maximum productivity\n2. Minimum cost\n3. Minimum number of employees");
+            Console.WriteLine("Select a criterion to calculate:\n1. Maximum productivity\n2. Minimum cost\n3. Minimum number of employees without juniors");
             int choice = Int32.Parse(Console.ReadLine());
             Optimizer optimizer;
             switch (choice)
@@ -27,7 +27,7 @@ namespace DevTask3
                     optimizer = new SecondCriterionOptimizer(Int32.Parse(Console.ReadLine()));
                     break;
                 case 3:
-                    Console.WriteLine("Enter required productivity without juniors:");
+                    Console.WriteLine("Enter required productivity:");
                     optimizer = new ThirdCriterionOptimizer(Int32.Parse(Console.ReadLine()));
                     break;
                 default:
