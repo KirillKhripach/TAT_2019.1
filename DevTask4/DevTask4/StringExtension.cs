@@ -10,7 +10,7 @@ namespace DevTask4
         /// <summary>
         /// Generates new GUID
         /// </summary>
-        /// <param name="inputString"></param>
+        /// <param name="inputString">String calling the method</param>
         /// <returns>New GUID</returns>
         public static Guid SetGuid(this string inputString)
         {

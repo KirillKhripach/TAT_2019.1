@@ -33,6 +33,11 @@ namespace DevTask4
             return string.IsNullOrEmpty(Description) ? "No description" : $"Description: {Description}";
         }
 
+        /// <summary>
+        /// Override method for comparing entities
+        /// </summary>
+        /// <param name="obj">Entity for comparing</param>
+        /// <returns>True if received entity has the same unique identifier</returns>
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -48,12 +53,9 @@ namespace DevTask4
         }
 
         /// <summary>
-        /// Performs deep entity cloning
+        /// Abstract method performs deep entity cloning
         /// </summary>
-        /// <returns>Throw exception</returns>
-        public virtual object Clone()
-        {
-            throw new Exception("Can not clone abstract class");
-        }
+        /// <returns>Clone of entity</returns>
+        public abstract object Clone();
     }
 }
