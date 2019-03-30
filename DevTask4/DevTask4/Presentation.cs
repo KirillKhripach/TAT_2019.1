@@ -4,16 +4,6 @@ using System.Collections.Generic;
 namespace DevTask4
 {
     /// <summary>
-    /// Enum presentation formats
-    /// </summary>
-    enum PresentationFormat
-    {
-        Unknown,
-        PPT,
-        PDF
-    }
-
-    /// <summary>
     /// Class for presentations
     /// </summary>
     class Presentation

@@ -22,11 +22,13 @@ namespace DevTask4
             get
             {
                 List<Material> materials = new List<Material>() { Lectures[i] };
-                foreach (Seminar seminar in Lectures[0].Seminars)
+
+                foreach (Seminar seminar in Lectures[i].Seminars)
                 {
                     materials.Add(seminar);
                 }
-                foreach (LaboratoryLesson laboratoryLesson in Lectures[0].LaboratoryLessons)
+
+                foreach (LaboratoryLesson laboratoryLesson in Lectures[i].LaboratoryLessons)
                 {
                     materials.Add(laboratoryLesson);
                 }
@@ -41,6 +43,7 @@ namespace DevTask4
         {
             DescriptionSetter description = new DescriptionSetter();
             Description = description.SetDescription();
+
             if (Description != null && Description.Length > 256)
             {
                 throw new Exception("Too large description");
@@ -70,6 +73,7 @@ namespace DevTask4
                 return false;
             }
             Discipline discipline = obj as Discipline;
+
             if (discipline != null)
             {
                 return (UniqueIdentifier == discipline.UniqueIdentifier);
@@ -84,6 +88,7 @@ namespace DevTask4
         public object Clone()
         {
             List<Lecture> lecturesCopy = new List<Lecture>();
+
             foreach (Lecture lecture in Lectures)
             {
                 lecturesCopy.Add((Lecture)lecture.Clone());

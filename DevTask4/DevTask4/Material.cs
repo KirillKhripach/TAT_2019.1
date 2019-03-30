@@ -17,6 +17,7 @@ namespace DevTask4
         {
             DescriptionSetter description = new DescriptionSetter();
             Description = description.SetDescription();
+
             if (Description != null && Description.Length > 256)
             {
                 throw new Exception("Too large description");
@@ -45,6 +46,7 @@ namespace DevTask4
                 return false;
             }
             Material material = obj as Material;
+
             if (material != null)
             {
                 return (UniqueIdentifier == material.UniqueIdentifier);

@@ -19,6 +19,7 @@ namespace DevTask4
         public Lecture()
         {
             TextOfLecture = "Lecture";
+
             if (TextOfLecture != null && TextOfLecture.Length > 100000)
             {
                 throw new Exception("Too large text of lecture");
@@ -35,18 +36,19 @@ namespace DevTask4
         public override object Clone()
         {
             List<Seminar> seminars = new List<Seminar>();
+
             foreach (Seminar seminar in Seminars)
             {
                 seminars.Add((Seminar)seminar.Clone());
             }
-
             List<LaboratoryLesson> laboratoryLessons = new List<LaboratoryLesson>();
+
             foreach (LaboratoryLesson laboratoryLesson in LaboratoryLessons)
             {
                 laboratoryLessons.Add((LaboratoryLesson)laboratoryLesson.Clone());
             }
-
             Presentation presentation = new Presentation(LecturePresentation.URI, LecturePresentation.Format);
+
             return new Lecture
             {
                 UniqueIdentifier = UniqueIdentifier,
