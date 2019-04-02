@@ -8,6 +8,7 @@ namespace DevTask1
     class EntryPoint
     {
         /// <summary>
+        /// Entry point
         /// Checks input string and calls finder's methods
         /// </summary>
         /// <param name="args">The command line arguments</param>
