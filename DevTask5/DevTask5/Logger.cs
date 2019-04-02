@@ -17,6 +17,7 @@ namespace DevTask5
         {
             if (obj is IFlyable)
             {
+                //Time in hours * 3600 = time in seconds
                 Console.WriteLine($"{obj.GetType().Name} flew {e.Distance:0.###} km in {e.Time * 3600:0.###} sec and reached a speed of {e.Speed:0.###} km/h");
             }
         }

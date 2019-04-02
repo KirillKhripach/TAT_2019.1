@@ -16,6 +16,8 @@ namespace DevTask5
 
         /// <summary>
         /// Constructor initializes fields
+        /// Start speed 200 km/h
+        /// Acceleration 10 km/h every 10 km
         /// Starting point (0, 0, 0)
         /// </summary>
         public Plane()

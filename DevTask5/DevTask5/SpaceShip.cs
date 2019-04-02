@@ -14,7 +14,7 @@ namespace DevTask5
 
         /// <summary>
         /// Constructor initializes fields
-        /// Starting speed = 8000 km/h = 8000 * 3600 km/s
+        /// Starting speed 8000 km/h = 8000 * 3600 km/s
         /// Starting point (0, 0, 0)
         /// </summary>
         public SpaceShip()

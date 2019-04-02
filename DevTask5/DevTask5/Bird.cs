@@ -11,6 +11,7 @@ namespace DevTask5
 
         /// <summary>
         /// Constructor initializes fields
+        /// Random speed up to 20 km/h
         /// Starting point (0, 0, 0)
         /// </summary>
         public Bird()
