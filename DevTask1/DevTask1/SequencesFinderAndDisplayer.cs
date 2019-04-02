@@ -15,6 +15,7 @@ namespace DevTask1
         public SequencesFinderAndDisplayer(string[] inputString)
         {
             processedString = new StringBuilder();
+
             foreach (string word in inputString)
             {
                 processedString.Append(word);
@@ -22,7 +23,7 @@ namespace DevTask1
         }
 
         /// <summary>
-        /// Finds string sequences without repeated in a row elements by
+        /// Finds string sequences without repetitive in a row elements by
         /// Comparing current symbol with next symbols
         /// </summary>
         /// <returns>List of sequences</returns>
@@ -30,10 +31,13 @@ namespace DevTask1
         {
             StringBuilder sequence;
             List<string> sequences = new List<string>();
+            sequence = new StringBuilder();
+
             for (int i = 0; i < processedString.Length - 1; i++)
             {
-                sequence = new StringBuilder();
+                sequence.Clear();
                 sequence.Append(processedString[i]);
+
                 for (int j = i + 1; j < processedString.Length; j++)
                 {
                     if (processedString[j - 1] != processedString[j])
@@ -47,6 +51,7 @@ namespace DevTask1
                     }
                 }
             }
+
             return sequences;
         }
 
