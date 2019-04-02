@@ -46,6 +46,7 @@
     <Compile Include="Bird.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="IFlyable.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="ObjectFlewInEventArgs.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Point.cs" />

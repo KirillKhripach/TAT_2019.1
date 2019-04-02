@@ -29,10 +29,13 @@ namespace DevTask5
         /// <param name="newPoint">New flight point</param>
         public void FlyTo(Point newPoint)
         {
-            Distance = StartPoint.GetDistance(newPoint);
-            ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
-            StartPoint = newPoint;
-            Distance = 0;
+            if (!StartPoint.Equals(newPoint))
+            {
+                Distance = StartPoint.GetDistance(newPoint);
+                StartPoint = newPoint;
+                ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
+                Distance = 0;
+            }
         }
 
         /// <summary>

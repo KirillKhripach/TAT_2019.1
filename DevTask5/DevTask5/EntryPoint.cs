@@ -9,17 +9,18 @@ namespace DevTask5
     class EntryPoint
     {
         /// <summary>
-        /// Entry point
+        /// Entry point creates 3 different IFlyable objects, adds subscribers to event
         /// </summary>
         static void Main(string[] args)
         {
             try
             {
                 List<IFlyable> flyables = new List<IFlyable>() { new Bird(), new Plane(), new SpaceShip() };
+                Logger logger = new Logger();
 
                 foreach (IFlyable flyable in flyables)
                 {
-                    flyable.ObjectFlewIn += ShowFlightInformation;
+                    flyable.ObjectFlewIn += logger.LogFlight;
                     flyable.FlyTo(new Point(100, 200, 800));
                 }
             }
@@ -27,17 +28,6 @@ namespace DevTask5
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
-        }
-
-        /// <summary>
-        /// Subscriber to the ObjectFlewIn Event
-        /// Receives and displays distance, time and speed of the flight
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="e"></param>
-        static void ShowFlightInformation(object obj, ObjectFlewInEventArgs e)
-        {
-            Console.WriteLine($"{obj.GetType().Name} flew {e.Distance:0.###} km in {e.Time * 3600:0.###} sec and reached a speed of {e.Speed:0.###} km/h");
         }
     }
 }

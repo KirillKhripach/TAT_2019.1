@@ -32,10 +32,13 @@ namespace DevTask5
         /// <param name="newPoint">New flight point</param>
         public void FlyTo(Point newPoint)
         {
-            Distance = StartPoint.GetDistance(newPoint);
-            ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
-            StartPoint = newPoint;
-            Distance = 0;
+            if (!StartPoint.Equals(newPoint))
+            {
+                Distance = StartPoint.GetDistance(newPoint);
+                StartPoint = newPoint;
+                ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
+                Distance = 0;
+            }
         }
 
         /// <summary>
@@ -45,16 +48,18 @@ namespace DevTask5
         public double GetFlyTime()
         {
             double flyTime = 0;
+            double distance = Distance;
 
-            for (; Distance > AccelerationFrequency;)
+            for (; distance > AccelerationFrequency;)
             {
                 flyTime += (double)AccelerationFrequency / FlySpeed;
                 FlySpeed += Acceleration;
-                Distance -= AccelerationFrequency;
+                distance -= AccelerationFrequency;
             }
-            flyTime += Distance / FlySpeed;
-            FlySpeed += (int)(Acceleration * Distance / AccelerationFrequency);
-            Distance -= Distance;
+
+            flyTime += distance / FlySpeed;
+            FlySpeed += (int)(Acceleration * distance / AccelerationFrequency);
+
             return flyTime;
         }
 
