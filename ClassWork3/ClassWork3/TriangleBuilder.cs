@@ -7,7 +7,7 @@
     {
         public TriangleBuilder Successor { get; private set; }
 
-        //calculation error 1E-10
+        //Calculation error 1E-10
         protected const double epsilon = 1E-10;
 
         /// <summary>

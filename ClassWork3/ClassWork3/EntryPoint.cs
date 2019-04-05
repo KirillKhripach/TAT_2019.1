@@ -21,7 +21,7 @@ namespace ClassWork3
                         new ArbitraryTriangleBuilder(null)));
 
                 //Three points define a equilateral triangle
-                Triangle triangle = triangleBuilder.Build(new Point(0, 0), new Point(0.5, Math.Sqrt(3.0 / 4.0)), new Point(1, 0));
+                Triangle triangle = triangleBuilder.Build(new Point(0.0, 0.0), new Point(0.5, Math.Sqrt(3.0 / 4.0)), new Point(1.0, 0.0));
                 Console.WriteLine($"Square of triangle is {triangle?.GetSquare().ToString() ?? "undefined"}");
             }
             catch (Exception ex)

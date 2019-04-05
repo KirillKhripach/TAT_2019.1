@@ -30,10 +30,6 @@ namespace ClassWork3
             double secondSide = firstPoint.GetSide(thirdPoint);
             double thirdSide = secondPoint.GetSide(thirdPoint);
 
-            Console.WriteLine(Math.Abs(firstSide - secondSide));
-            Console.WriteLine(Math.Abs(firstSide - thirdSide));
-            Console.WriteLine(Math.Abs(secondSide - thirdSide));
-
             if (Math.Abs(firstSide - secondSide) < epsilon
                 && Math.Abs(firstSide - thirdSide) < epsilon
                 && Math.Abs(secondSide - thirdSide) < epsilon)
