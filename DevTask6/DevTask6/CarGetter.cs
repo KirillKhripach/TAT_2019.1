@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace DevTask6
 {
@@ -9,67 +10,32 @@ namespace DevTask6
     /// </summary>
     class CarGetter
     {
-        private XmlDocument XmlDoc { get; set; }
+        private XDocument XDoc { get; set; }
 
         /// <summary>
-        /// Constructor loads xml file
+        /// Constructor allocates memory
         /// </summary>
-        /// <param name="fileName">File name</param>
-        public CarGetter(string fileName)
+        public CarGetter()
         {
-            XmlDoc = new XmlDocument();
-            XmlDoc.Load($"../../{fileName}.xml");
+            XDoc = new XDocument();
         }
 
         /// <summary>
-        /// Gets cars from xml file
+        /// Loads xml file and gets cars from it
         /// </summary>
-        /// <returns>List of cars</returns>
-        public List<Car> GetCars()
+        /// <param name="fileName">File name</param>
+        /// <returns>Collection of cars</returns>
+        public IEnumerable<Car> GetCars(string fileName)
         {
-            List<Car> cars = new List<Car>();
-            XmlElement xmlElement = XmlDoc.DocumentElement;
+            XDoc = XDocument.Load($"../../{fileName}.xml");
 
-            foreach (XmlNode xmlNode in xmlElement)
-            {
-                string brand = string.Empty;
-                string model = string.Empty;
-                int count = 0;
-                int price = 0;
-
-                foreach (XmlNode childNode in xmlNode.ChildNodes)
-                {
-                    switch (childNode.Name)
-                    {
-                        case "brand":
-                            brand = childNode.InnerText;
-                            break;
-
-                        case "model":
-                            model = childNode.InnerText;
-                            break;
-
-                        case "count":
-                            if (!int.TryParse(childNode.InnerText, out count))
-                            {
-                                throw new Exception("Incorrect count value");
-                            }
-                            break;
-
-                        case "price":
-                            if (!int.TryParse(childNode.InnerText, out price))
-                            {
-                                throw new Exception("Incorrect price value");
-                            }
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-
-                cars.Add(new Car(brand, model, count, price));
-            }
+            IEnumerable<Car> cars = XDoc.Element("cars").Elements("car").Select(xe => new Car
+            (
+                xe.Element("brand").Value,
+                xe.Element("model").Value,
+                int.TryParse(xe.Element("count").Value, out int count) ? count : throw new Exception("Incorrect count value"),
+                int.TryParse(xe.Element("price").Value, out int price) ? price : throw new Exception("Incorrect price value")
+             ));
 
             return cars;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DevTask6
 {
@@ -17,12 +18,20 @@ namespace DevTask6
         {
             try
             {
-                if (args.Length == 0)
+                if (args.Length < 2)
                 {
-                    throw new Exception("File name not specified");
+                    throw new Exception("File names are not specified");
                 }
-                CarGetter carGetter = new CarGetter(args[0]);
-                Menu menu = new Menu(new CarCatalog(carGetter.GetCars()));
+
+                CarGetter carGetter = new CarGetter();
+
+                List<CarCatalog> catalogs = new List<CarCatalog>()
+                {
+                    new CarCatalog(carGetter.GetCars(args[(int)CarTypes.Passenger])),
+                    new CarCatalog(carGetter.GetCars(args[(int)CarTypes.Truck]))
+                };
+                
+                Menu menu = new Menu(catalogs);
                 menu.Display();
             }
             catch (Exception ex)
