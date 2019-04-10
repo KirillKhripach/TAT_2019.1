@@ -1,6 +1,6 @@
 ﻿namespace DevTask6
 {
-    public enum CatalogCommand
+    public enum CatalogCommands
     {
         CountTypes = 1,
         CountAll,

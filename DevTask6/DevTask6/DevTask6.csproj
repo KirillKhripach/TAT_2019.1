@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalogCommand.cs" />
+    <Compile Include="CatalogCommands.cs" />
     <Compile Include="AveragePriceCommand.cs" />
     <Compile Include="AveragePriceTypeCommand.cs" />
     <Compile Include="Car.cs" />

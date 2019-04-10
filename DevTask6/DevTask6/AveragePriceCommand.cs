@@ -23,7 +23,7 @@ namespace DevTask6
         /// </summary>
         public void Execute()
         {
-            Console.WriteLine(Catalog.GetAveragePrice());
+            Console.WriteLine(Catalog?.GetAveragePrice());
         }
     }
 }

@@ -35,26 +35,26 @@ namespace DevTask6
                     continue;
                 }
 
-                switch ((CatalogCommand)input)
+                switch ((CatalogCommands)input)
                 {
-                    case CatalogCommand.CountTypes:
+                    case CatalogCommands.CountTypes:
                         Command = new CountTypesCommand(Catalog);
                         break;
 
-                    case CatalogCommand.CountAll:
+                    case CatalogCommands.CountAll:
                         Command = new CountAllCommand(Catalog);
                         break;
 
-                    case CatalogCommand.AveragePrice:
+                    case CatalogCommands.AveragePrice:
                         Command = new AveragePriceCommand(Catalog);
                         break;
 
-                    case CatalogCommand.AveragePriceType:
+                    case CatalogCommands.AveragePriceType:
                         Console.WriteLine("Enter car brand:");
                         Command = new AveragePriceTypeCommand(Catalog, Console.ReadLine());
                         break;
 
-                    case CatalogCommand.Exit:
+                    case CatalogCommands.Exit:
                         entry = false;
                         Command = null;
                         break;
