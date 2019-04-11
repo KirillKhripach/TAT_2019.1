@@ -3,7 +3,7 @@
 namespace DevTask6
 {
     /// <summary>
-    /// Сlass for counting brands of cars method
+    /// Class for counting brands of cars method
     /// </summary>
     class CountTypesCommand : ICommand
     {
@@ -15,7 +15,7 @@ namespace DevTask6
         /// <param name="carCatalog">Catalog of cars</param>
         public CountTypesCommand(CarCatalog carCatalog)
         {
-            Catalog = carCatalog;
+            this.Catalog = carCatalog;
         }
 
         /// <summary>

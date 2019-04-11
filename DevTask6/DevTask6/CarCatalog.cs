@@ -17,7 +17,7 @@ namespace DevTask6
         /// <param name="cars">List of cars</param>
         public CarCatalog(IEnumerable<Car> cars)
         {
-            Cars = cars;
+            this.Cars = cars;
         }
 
         /// <summary>

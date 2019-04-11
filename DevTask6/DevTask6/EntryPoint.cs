@@ -19,7 +19,7 @@ namespace DevTask6
             try
             {
                 // Checks for 2 file names
-                if (args.Length < 2)
+                if (args.Length != 2)
                 {
                     throw new Exception("File names are not specified");
                 }

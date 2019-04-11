@@ -3,7 +3,7 @@
 namespace DevTask6
 {
     /// <summary>
-    /// Сlass for counting average price method for a specific brand
+    /// Class for counting average price method for a specific brand
     /// </summary>
     class AveragePriceTypeCommand : ICommand
     {
@@ -17,8 +17,8 @@ namespace DevTask6
         /// <param name="brand">Brand for counting</param>
         public AveragePriceTypeCommand(CarCatalog carCatalog, string brand)
         {
-            Catalog = carCatalog;
-            Brand = brand;
+            this.Catalog = carCatalog;
+            this.Brand = brand;
         }
 
         /// <summary>

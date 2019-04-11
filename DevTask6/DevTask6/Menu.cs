@@ -18,7 +18,7 @@ namespace DevTask6
         /// <param name="carCatalog">List of catalogs</param>
         public Menu(List<CarCatalog> catalogs)
         {
-            Catalogs = catalogs;
+            this.Catalogs = catalogs;
         }
 
         /// <summary>

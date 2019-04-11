@@ -18,7 +18,7 @@ namespace DevTask6
         /// </summary>
         private CarGetter()
         {
-            XDoc = new XDocument();
+            this.XDoc = new XDocument();
         }
 
         /// <summary>
