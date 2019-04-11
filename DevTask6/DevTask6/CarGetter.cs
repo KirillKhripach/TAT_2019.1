@@ -10,14 +10,30 @@ namespace DevTask6
     /// </summary>
     class CarGetter
     {
+        private static CarGetter _instance;
         private XDocument XDoc { get; set; }
 
         /// <summary>
         /// Constructor allocates memory
         /// </summary>
-        public CarGetter()
+        private CarGetter()
         {
             XDoc = new XDocument();
+        }
+
+        /// <summary>
+        /// Singleton pattern
+        /// Creates object if it does not exist
+        /// </summary>
+        /// <returns>CarGetter object</returns>
+        public static CarGetter GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new CarGetter();
+            }
+            
+            return _instance;
         }
 
         /// <summary>
