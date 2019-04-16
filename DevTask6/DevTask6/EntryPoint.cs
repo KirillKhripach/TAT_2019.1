@@ -17,10 +17,12 @@ namespace DevTask6
         {
             try
             {
+                // Checks for 1 file name
                 if (args.Length != 1)
                 {
                     throw new Exception("File name not specified");
                 }
+                
                 CarGetter carGetter = new CarGetter(args[0]);
                 Menu menu = new Menu(new CarCatalog(carGetter.GetCars()));
                 menu.Display();
