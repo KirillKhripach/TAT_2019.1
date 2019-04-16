@@ -17,8 +17,8 @@ namespace DevTask6
         /// <param name="fileName">File name</param>
         public CarGetter(string fileName)
         {
-            XmlDoc = new XmlDocument();
-            XmlDoc.Load($"../../{fileName}.xml");
+            this.XmlDoc = new XmlDocument();
+            this.XmlDoc.Load($"../../{fileName}.xml");
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace DevTask6
         public List<Car> GetCars()
         {
             List<Car> cars = new List<Car>();
-            XmlElement xmlElement = XmlDoc.DocumentElement;
+            XmlElement xmlElement = this.XmlDoc.DocumentElement;
 
             foreach (XmlNode xmlNode in xmlElement)
             {
@@ -44,25 +44,21 @@ namespace DevTask6
                         case "brand":
                             brand = childNode.InnerText;
                             break;
-
                         case "model":
                             model = childNode.InnerText;
                             break;
-
                         case "count":
                             if (!int.TryParse(childNode.InnerText, out count))
                             {
                                 throw new Exception("Incorrect count value");
                             }
                             break;
-
                         case "price":
                             if (!int.TryParse(childNode.InnerText, out price))
                             {
                                 throw new Exception("Incorrect price value");
                             }
                             break;
-
                         default:
                             break;
                     }

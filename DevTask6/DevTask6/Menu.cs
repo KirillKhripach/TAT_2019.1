@@ -3,7 +3,7 @@
 namespace DevTask6
 {
     /// <summary>
-    /// Class for user and program interaction
+    /// Class for executing commands with car catalog
     /// </summary>
     class Menu
     {
@@ -16,55 +16,44 @@ namespace DevTask6
         /// <param name="carCatalog">Catalog of cars</param>
         public Menu(CarCatalog carCatalog)
         {
-            Catalog = carCatalog;
+            this.Catalog = carCatalog;
         }
 
         /// <summary>
-        /// Displays information according to chosen command
+        /// Executes command according to input data
         /// </summary>
         public void Display()
         {
-            for (bool entry = true; entry;)
-            {
-                Console.WriteLine("Enter command(1-5):\n" + "1. Count types\n" + "2. Count all\n"
-                    + "3. Average price\n" + "4. Average price type\n" + "5. Exit");
+            bool entry = true;
+            Inputer inputer = new Inputer();
 
-                if (!int.TryParse(Console.ReadLine(), out int input))
-                {
-                    Console.WriteLine("Incorrect input data");
-                    continue;
-                }
-
-                switch ((CatalogCommands)input)
+            while (entry)
+            {     
+                switch (inputer.GetCommand())
                 {
                     case CatalogCommands.CountTypes:
-                        Command = new CountTypesCommand(Catalog);
+                        this.Command = new CountTypesCommand(this.Catalog);
                         break;
-
                     case CatalogCommands.CountAll:
-                        Command = new CountAllCommand(Catalog);
+                        this.Command = new CountAllCommand(this.Catalog);
                         break;
-
                     case CatalogCommands.AveragePrice:
-                        Command = new AveragePriceCommand(Catalog);
+                        this.Command = new AveragePriceCommand(this.Catalog);
                         break;
-
                     case CatalogCommands.AveragePriceType:
                         Console.WriteLine("Enter car brand:");
-                        Command = new AveragePriceTypeCommand(Catalog, Console.ReadLine());
+                        this.Command = new AveragePriceTypeCommand(this.Catalog, Console.ReadLine());
                         break;
-
                     case CatalogCommands.Exit:
                         entry = false;
-                        Command = null;
+                        this.Command = null;
                         break;
-
                     default:
                         Console.WriteLine("Incorrect command");
                         continue;
                 }
 
-                Command?.Execute();
+                this.Command?.Execute();
             }
         }
     }

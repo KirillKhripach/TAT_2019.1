@@ -53,6 +53,7 @@
     <Compile Include="CountTypesCommand.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="Inputer.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

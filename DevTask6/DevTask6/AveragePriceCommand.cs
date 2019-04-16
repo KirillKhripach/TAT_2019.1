@@ -15,7 +15,7 @@ namespace DevTask6
         /// <param name="carCatalog">Catalog of cars</param>
         public AveragePriceCommand(CarCatalog carCatalog)
         {
-            Catalog = carCatalog;
+            this.Catalog = carCatalog;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace DevTask6
         /// </summary>
         public void Execute()
         {
-            Console.WriteLine(Catalog?.GetAveragePrice());
+            Console.WriteLine(this.Catalog?.GetAveragePrice());
         }
     }
 }

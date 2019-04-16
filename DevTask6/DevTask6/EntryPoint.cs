@@ -17,7 +17,7 @@ namespace DevTask6
         {
             try
             {
-                if (args.Length == 0)
+                if (args.Length != 1)
                 {
                     throw new Exception("File name not specified");
                 }

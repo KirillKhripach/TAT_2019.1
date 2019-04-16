@@ -21,10 +21,10 @@ namespace DevTask6
         /// <param name="price">Price of one car</param>
         public Car(string brand, string model, int count, int price)
         {
-            Brand = brand != string.Empty ? brand.ToLower() : throw new Exception("Brand should not be empty");
-            Model = model != string.Empty ? model.ToLower() : throw new Exception("Model should not be empty");
-            Count = count >= 0 ? count : throw new Exception("Count should be non-negative");
-            Price = price >= 0 ? price : throw new Exception("Price should be non-negative");
+            this.Brand = brand != string.Empty ? brand.ToLower() : throw new Exception("Brand should not be empty");
+            this.Model = model != string.Empty ? model.ToLower() : throw new Exception("Model should not be empty");
+            this.Count = count >= 0 ? count : throw new Exception("Count should be non-negative");
+            this.Price = price >= 0 ? price : throw new Exception("Price should be non-negative");
         }
     }
 }

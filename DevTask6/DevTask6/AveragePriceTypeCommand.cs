@@ -17,8 +17,8 @@ namespace DevTask6
         /// <param name="brand">Brand for counting</param>
         public AveragePriceTypeCommand(CarCatalog carCatalog, string brand)
         {
-            Catalog = carCatalog;
-            Brand = brand;
+            this.Catalog = carCatalog;
+            this.Brand = brand;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace DevTask6
         /// </summary>
         public void Execute()
         {
-            Console.WriteLine(Catalog?.GetAveragePriceBrand(Brand));
+            Console.WriteLine(this.Catalog?.GetAveragePriceBrand(this.Brand));
         }
     }
 }
