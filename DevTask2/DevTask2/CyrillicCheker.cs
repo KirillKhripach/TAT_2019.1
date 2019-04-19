@@ -6,7 +6,7 @@ namespace DevTask2
     /// <summary>
     /// Class for checking that string is contains from Cyrillic letters
     /// </summary>
-    public class CyrillicCheker
+    class CyrillicCheker
     {
         public string StringToCheck { get; private set; }
 
