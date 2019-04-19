@@ -23,7 +23,7 @@ namespace DevTask2
                     throw new Exception("The word should be one and contains at least two letters");
                 }
 
-                ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter(args[0]);
+                ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter("brain");
                 Console.WriteLine(toPhonemesConverter.ConvertToPhenomes());
             }
             catch (Exception ex)

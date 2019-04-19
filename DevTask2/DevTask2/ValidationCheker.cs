@@ -6,7 +6,7 @@ namespace DevTask2
     /// <summary>
     /// Class for validating input string
     /// </summary>
-    class ValidationCheker
+    public class ValidationCheker
     {
         public string StringToCheck { get; private set; }
         private readonly string _vowelsString = "аиоуыэеёюя";

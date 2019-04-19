@@ -6,7 +6,7 @@ namespace DevTask2
     /// <summary>
     /// Class for checking that string is contains from Cyrillic letters
     /// </summary>
-    class CyrillicCheker
+    public class CyrillicCheker
     {
         public string StringToCheck { get; private set; }
 
@@ -28,7 +28,7 @@ namespace DevTask2
             foreach (char i in this.StringToCheck)
             {
                 // Range(1072, 34) for Cyrillic letters
-                if (char.IsLetter(i) && !Enumerable.Range(1072, 34).Contains(i))
+                if (i != '+' && !Enumerable.Range(1072, 34).Contains(i))
                 {
                     throw new Exception("String contains non-Cyrillic symbols");
                 }
