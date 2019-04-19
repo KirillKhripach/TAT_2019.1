@@ -10,17 +10,20 @@ namespace DevTask2
     {
         public string StringToCheck { get; private set; }
         private readonly string _vowelsString = "аиоуыэеёюя";
-        private int _plusCount = 0;
-        private int _yoCount = 0;
-        private int _vowelsCount = 0;
+        private int _plusCount;
+        private int _yoCount;
+        private int _vowelsCount;
 
         /// <summary>
-        /// Constructor initializes properties
+        /// Constructor initializes properties and fields
         /// </summary>
         /// <param name="inputString">String to check</param>
         public ValidationCheker(string inputString)
         {
             this.StringToCheck = inputString;
+            this._plusCount = 0;
+            this._yoCount = 0;
+            this._vowelsCount = 0;
         }
 
         /// <summary>
