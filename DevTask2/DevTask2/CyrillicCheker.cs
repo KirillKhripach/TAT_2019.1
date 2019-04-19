@@ -20,9 +20,9 @@ namespace DevTask2
         }
 
         /// <summary>
-        /// Checks that letters is Cyrillic
+        /// Checks that letters are Cyrillic
         /// </summary>
-        /// <returns>True if letters is Cyrillic, else throws exception</returns>
+        /// <returns>True if letters are Cyrillic, else throws exception</returns>
         public bool Check()
         {
             foreach (char i in this.StringToCheck)

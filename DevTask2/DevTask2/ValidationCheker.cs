@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace DevTask2
 {
+    /// <summary>
+    /// Class for validating input string
+    /// </summary>
     class ValidationCheker
     {
         public string StringToCheck { get; private set; }
@@ -47,14 +50,11 @@ namespace DevTask2
             {
                 throw new Exception("Incorrect plus position");
             }
-            else
-            {
-                if (this.StringToCheck.Contains('+') && (this._yoCount > 0 && this.StringToCheck[this.StringToCheck.IndexOf('+') - 1] != 'ё'))
-                {
-                    throw new Exception("Incorrect plus position");
-                }
-            }
 
+            if (this.StringToCheck.Contains('+') && this._yoCount > 0 && this.StringToCheck[this.StringToCheck.IndexOf('+') - 1] != 'ё')
+            {
+                throw new Exception("Incorrect plus position");
+            }
 
             return true;
         }
@@ -69,16 +69,16 @@ namespace DevTask2
                 switch (this.StringToCheck[i])
                 {
                     case '+':
-                        this._plusCount += 1;
+                        this._plusCount++;
                         break;
                     case 'ё':
-                        this._yoCount += 1;
-                        this._vowelsCount += 1;
+                        this._yoCount++;
+                        this._vowelsCount++;
                         break;
                     default:
                         if (this._vowelsString.Contains(this.StringToCheck[i]))
                         {
-                            this._vowelsCount += 1;
+                            this._vowelsCount++;
                         }
                         break;
                 }

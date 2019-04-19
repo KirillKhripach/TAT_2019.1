@@ -29,7 +29,6 @@ namespace DevTask2
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
-                Console.WriteLine($"Трассировка стека: {ex.StackTrace}");
             }
         }
     }
