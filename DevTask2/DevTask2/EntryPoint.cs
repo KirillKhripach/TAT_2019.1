@@ -2,26 +2,34 @@
 
 namespace DevTask2
 {
+    /// <summary>
+    /// Class contains entry point to the program
+    /// Where word from command line converts to phonemes
+    /// </summary>
     class EntryPoint
     {
         /// <summary>
-        /// Entry point
+        /// Entry point to the program
+        /// Checks input word and calls conversion method
         /// </summary>
-        /// <param name="args">The command line arguments</param>
+        /// <param name="args">The command line arguments, word for converting</param>
         static void Main(string[] args)
         {
             try
             {
-                if (args.Length == 0)
+                //Checks for 1 word and 2 symbols at least without '+'  
+                if (args.Length != 1 || args[0].Replace("+", string.Empty).Length < 2)
                 {
-                    throw new Exception("Wrong number of arguments");
+                    throw new Exception("The word should be one and contains at least two letters");
                 }
-                ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter(args);
+
+                ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter(args[0]);
                 Console.WriteLine(toPhonemesConverter.ConvertToPhenomes());
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Трассировка стека: {ex.StackTrace}");
             }
         }
     }
