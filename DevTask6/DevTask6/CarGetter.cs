@@ -23,7 +23,7 @@ namespace DevTask6
 
         /// <summary>
         /// Singleton pattern
-        /// Creates object if it does not exist
+        /// Creates an object if it does not exist
         /// </summary>
         /// <returns>CarGetter object</returns>
         public static CarGetter GetInstance()
@@ -43,14 +43,14 @@ namespace DevTask6
         /// <returns>Collection of cars</returns>
         public IEnumerable<Car> GetCars(string fileName)
         {
-            XDoc = XDocument.Load($"../../{fileName}.xml");
+            this.XDoc = XDocument.Load($"../../{fileName}.xml");
 
-            IEnumerable<Car> cars = XDoc.Element("cars").Elements("car").Select(xe => new Car
+            IEnumerable<Car> cars = this.XDoc.Element("cars").Elements("car").Select(xe => new Car
             (
-                xe.Element("brand").Value,
-                xe.Element("model").Value,
-                int.TryParse(xe.Element("count").Value, out int count) ? count : throw new Exception("Incorrect count value"),
-                int.TryParse(xe.Element("price").Value, out int price) ? price : throw new Exception("Incorrect price value")
+                xe.Element(CarDescription.Brand.ToString().ToLower()).Value,
+                xe.Element(CarDescription.Model.ToString().ToLower()).Value,
+                int.TryParse(xe.Element(CarDescription.Count.ToString().ToLower()).Value, out int count) ? count : throw new Exception("Incorrect count value"),
+                int.TryParse(xe.Element(CarDescription.Price.ToString().ToLower()).Value, out int price) ? price : throw new Exception("Incorrect price value")
              ));
 
             return cars;

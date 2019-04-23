@@ -12,7 +12,7 @@ namespace DevTask6
         public IEnumerable<Car> Cars { get; private set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
         /// <param name="cars">List of cars</param>
         public CarCatalog(IEnumerable<Car> cars)
@@ -26,7 +26,7 @@ namespace DevTask6
         /// <returns>Count of brands</returns>
         public int GetCarBrandesCount()
         {
-            return Cars.GroupBy(car => car.Brand).Count();
+            return this.Cars.GroupBy(car => car.Brand).Count();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace DevTask6
         /// <returns>Count of cars</returns>
         public int GetCarsCount()
         {
-            return Cars.Select(car => car.Count).Sum();
+            return this.Cars.Select(car => car.Count).Sum();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace DevTask6
         /// <returns>Average price</returns>
         public double GetAveragePrice()
         {
-            return Cars.Select(car => car.Price).Average();
+            return this.Cars.Select(car => car.Price).Average();
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace DevTask6
         /// <returns>Average price</returns>
         public double GetAveragePriceBrand(string brand)
         {
-            if (Cars.Select(car => car.Brand).Contains(brand.ToLower()))
+            if (this.Cars.Select(car => car.Brand).Contains(brand.ToLower()))
             {
-                return Cars.Where(car => car.Brand == brand.ToLower()).Select(car => car.Price).Average();
+                return this.Cars.Where(car => car.Brand == brand.ToLower()).Select(car => car.Price).Average();
             }
             else
             {

@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarTypes.cs" />
+    <Compile Include="CarDescription.cs" />
+    <Compile Include="CarType.cs" />
     <Compile Include="CatalogCommands.cs" />
     <Compile Include="AveragePriceCommand.cs" />
     <Compile Include="AveragePriceTypeCommand.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="CountTypesCommand.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="Inputer.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

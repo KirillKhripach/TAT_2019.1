@@ -11,7 +11,7 @@ namespace DevTask6
         private string Brand { get; set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
         /// <param name="carCatalog">Catalog of cars</param>
         /// <param name="brand">Brand for counting</param>
@@ -26,7 +26,7 @@ namespace DevTask6
         /// </summary>
         public void Execute()
         {
-            Console.WriteLine(Catalog?.GetAveragePriceBrand(Brand));
+            Console.WriteLine(this.Catalog?.GetAveragePriceBrand(this.Brand));
         }
     }
 }

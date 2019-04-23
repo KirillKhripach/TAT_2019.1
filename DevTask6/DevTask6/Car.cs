@@ -13,7 +13,7 @@ namespace DevTask6
         public int Price { get; private set; }
 
         /// <summary>
-        /// Constructor initializes fields and validates input data
+        /// Constructor initializes properties and validates input data
         /// </summary>
         /// <param name="brand">Brand of the car</param>
         /// <param name="model">Model of the car</param>

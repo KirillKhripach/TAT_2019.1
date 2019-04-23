@@ -28,8 +28,8 @@ namespace DevTask6
 
                 List<CarCatalog> catalogs = new List<CarCatalog>()
                 {
-                    new CarCatalog(carGetter.GetCars(args[(int)CarTypes.Passenger])),
-                    new CarCatalog(carGetter.GetCars(args[(int)CarTypes.Truck]))
+                    new CarCatalog(carGetter.GetCars(args[(int)CarType.Passenger])),
+                    new CarCatalog(carGetter.GetCars(args[(int)CarType.Truck]))
                 };
                 
                 Menu menu = new Menu(catalogs);

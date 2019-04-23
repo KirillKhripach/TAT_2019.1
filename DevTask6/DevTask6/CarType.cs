@@ -3,7 +3,7 @@
     /// <summary>
     /// Enum types of cars
     /// </summary>
-    enum CarTypes
+    enum CarType
     {
         Passenger,
         Truck
