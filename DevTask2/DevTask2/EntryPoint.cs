@@ -17,7 +17,7 @@ namespace DevTask2
         {
             try
             {
-                //Checks for 1 word and 2 symbols at least without '+'  
+                //Checks for 1 word
                 if (args.Length != 1)
                 {
                     throw new Exception("The word should be one");
