@@ -18,9 +18,9 @@ namespace DevTask2
             try
             {
                 //Checks for 1 word and 2 symbols at least without '+'  
-                if (args.Length != 1 || args[0].Replace("+", string.Empty).Length < 2)
+                if (args.Length != 1)
                 {
-                    throw new Exception("The word should be one and contains at least two letters");
+                    throw new Exception("The word should be one");
                 }
 
                 ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter(args[0]);

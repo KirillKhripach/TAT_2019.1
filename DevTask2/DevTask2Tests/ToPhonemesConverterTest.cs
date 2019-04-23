@@ -23,7 +23,7 @@ namespace DevTask2Tests
         public void Convert_LessThenTwoLetters_ThrowsArgumentOutOfRangeException(string inputString)
         {
             ToPhonemesConverter converter = new ToPhonemesConverter(inputString);
-            Assert.Throws<ArgumentOutOfRangeException>(() => converter.ConvertToPhenomes());
+            Assert.Throws<Exception>(() => converter.ConvertToPhenomes());
         }
 
         [TestCase("мёди+к")]
