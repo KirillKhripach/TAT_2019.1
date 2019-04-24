@@ -17,12 +17,13 @@ namespace DevTask2
         {
             try
             {
-                //Checks for 1 word
+                // Checks for 1 word
                 if (args.Length != 1)
                 {
                     throw new Exception("The word should be one");
                 }
 
+                // Takes first word from command line(args[0])
                 ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter(args[0]);
                 Console.WriteLine(toPhonemesConverter.ConvertToPhenomes());
             }
