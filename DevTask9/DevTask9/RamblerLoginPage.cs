@@ -30,7 +30,7 @@ namespace DevTask9
         /// <returns>Rambler main page</returns>
         public RamblerMainPage LoginToRambler(string login, string password)
         {
-            this.Driver.SwitchTo().Frame(this.Driver.FindElement(By.XPath("//iframe"), 10));
+            this.Driver.SwitchTo().Frame(this.Driver.FindElement(By.XPath("//iframe[contains(@src, 'login')]"), 10));
             this.Login = this.Driver.FindElement(By.XPath("//input[@name = 'login']"), 10);
             this.Login.SendKeys(login);
             this.Password = this.Driver.FindElement(By.XPath("//input[@name = 'password']"), 10);

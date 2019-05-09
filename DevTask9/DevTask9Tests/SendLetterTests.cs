@@ -1,14 +1,17 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using DevTask9;
 
 namespace DevTask9Tests
 {
-    [TestFixture]
-    public class MailLoginTests
+    class SendLetterTests
     {
         private IWebDriver Driver { get; set; }
+        private string MailAdress { get; set; } = "DevTask9@mail.ru";
+        private string MailPassword { get; set; } = "1D2e3v4T5@6s7k89";
+        private string RamblerAdress { get; set; } = "DevTask9@rambler.ru";
+        private string RamblerPassword { get; set; } = "DevTask9";
 
         [SetUp]
         public void OpenBrowser()
@@ -16,13 +19,13 @@ namespace DevTask9Tests
             this.Driver = new ChromeDriver();
             this.Driver.Navigate().GoToUrl("https://mail.ru");
         }
-        
+
         [TestCase("DevTask9@mail.ru", "1D2e3v4T5@6s7k89")]
-        public void Login_CorrectInput_ElementDisplayed(string login, string password)
+        public void Login_CorrectInput_NoErrorDisplayed(string login, string password)
         {
             MailLoginPage mailPage = new MailLoginPage(this.Driver);
             mailPage.LoginToMail(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//span[contains(text(), 'Написать письмо')]"), 3).Displayed);
+            Assert.IsTrue(!this.Driver.FindElement(By.XPath("//div[@id = 'mailbox:error']"), 3).Displayed);
         }
 
         [TestCase("pochta", "parol")]
@@ -33,7 +36,7 @@ namespace DevTask9Tests
         {
             MailLoginPage mailPage = new MailLoginPage(this.Driver);
             mailPage.LoginToMail(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//div[@id = 'mailbox:error' and (contains(text(), 'имя') or contains(text(), 'пароль'))]"), 3).Displayed);
+            Assert.IsTrue(this.Driver.FindElement(By.XPath("//div[@id = 'mailbox:error']"), 3).Displayed);
         }
 
         [TearDown]
@@ -43,3 +46,4 @@ namespace DevTask9Tests
         }
     }
 }
+*/

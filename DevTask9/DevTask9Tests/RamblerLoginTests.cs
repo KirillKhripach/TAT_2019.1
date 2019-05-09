@@ -6,7 +6,7 @@ using DevTask9;
 namespace DevTask9Tests
 {
     [TestFixture]
-    public class MailLoginTests
+    public class RamblerLoginTests
     {
         private IWebDriver Driver { get; set; }
 
@@ -14,15 +14,15 @@ namespace DevTask9Tests
         public void OpenBrowser()
         {
             this.Driver = new ChromeDriver();
-            this.Driver.Navigate().GoToUrl("https://mail.ru");
+            this.Driver.Navigate().GoToUrl("https://mail.rambler.ru");
         }
-        
-        [TestCase("DevTask9@mail.ru", "1D2e3v4T5@6s7k89")]
+
+        [TestCase("DevTask9@rambler.ru", "DevTask9")]
         public void Login_CorrectInput_ElementDisplayed(string login, string password)
         {
-            MailLoginPage mailPage = new MailLoginPage(this.Driver);
-            mailPage.LoginToMail(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//span[contains(text(), 'Написать письмо')]"), 3).Displayed);
+            RamblerLoginPage ramblerPage = new RamblerLoginPage(this.Driver);
+            ramblerPage.LoginToRambler(login, password);
+            Assert.IsTrue(this.Driver.FindElement(By.XPath("//span[contains(text(), 'Написать')]"), 3).Displayed);
         }
 
         [TestCase("pochta", "parol")]
@@ -31,9 +31,9 @@ namespace DevTask9Tests
         [TestCase("", "parol")]
         public void Login_IncorrectInput_ErrorDisplayed(string login, string password)
         {
-            MailLoginPage mailPage = new MailLoginPage(this.Driver);
-            mailPage.LoginToMail(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//div[@id = 'mailbox:error' and (contains(text(), 'имя') or contains(text(), 'пароль'))]"), 3).Displayed);
+            RamblerLoginPage ramblerPage = new RamblerLoginPage(this.Driver);
+            ramblerPage.LoginToRambler(login, password);
+            Assert.IsTrue(this.Driver.FindElement(By.XPath("//div[@class = 'rui-InputStatus-message']"), 3).Displayed);
         }
 
         [TearDown]
