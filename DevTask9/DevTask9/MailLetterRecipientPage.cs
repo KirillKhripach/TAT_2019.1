@@ -5,7 +5,7 @@ namespace DevTask9
     /// <summary>
     /// Class for reading letter
     /// </summary>
-    class MailPageLetterRecipient
+    public class MailLetterRecipientPage
     {
         private IWebDriver Driver { get; set; }
         private IWebElement Nickname { get; set; }
@@ -16,7 +16,7 @@ namespace DevTask9
         /// Constructor initializes properties
         /// </summary>
         /// <param name="driver">WebDriver</param>
-        public MailPageLetterRecipient(IWebDriver driver)
+        public MailLetterRecipientPage(IWebDriver driver)
         {
             this.Driver = driver;
         }
@@ -36,14 +36,14 @@ namespace DevTask9
         /// Opens settings
         /// </summary>
         /// <returns>Mail settings page</returns>
-        public MailPageSettings GoToSetting()
+        public MailSettingsPage GoToSetting()
         {
             this.Profile = this.Driver.FindElement(By.XPath("//span[@id = 'PH_authMenu_button']"), 10);
             this.Profile.Click();
             this.Settings = this.Driver.FindElement(By.XPath("//span[contains(text(), 'Личные данные')]"), 10);
             this.Settings.Click();
 
-            return new MailPageSettings(this.Driver);
+            return new MailSettingsPage(this.Driver);
         }
     }
 }

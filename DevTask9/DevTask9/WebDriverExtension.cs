@@ -7,7 +7,7 @@ namespace DevTask9
     /// <summary>
     /// Class for IWebElement extensions
     /// </summary>
-    static class WebDriverExtension
+    public static class WebDriverExtension
     {
         /// <summary>
         /// Searches for an element for a specified time

@@ -10,18 +10,19 @@ namespace DevTask9
         {
             try
             {
-                /*IWebDriver Driver;
+                IWebDriver Driver;
                 Driver = new ChromeDriver();
-                
-                MailPageLogin page1 = new MailPageLogin(Driver);
-                page1.GoToLoginPage();
-                page1.LoginToMail("DevTask9", "1D2e3v4T5@6s7k89").ClickToWriteLetter().SendLetter("devtask9@rambler.ru", "message");
-                
-                RamblerPageLogin page2 = new RamblerPageLogin(Driver);
-                page2.GoToLoginPage();
-                page2.LoginToRambler("DevTask9", "DevTask9").ChooseUnreadLetter("devtask9@mail.ru").ReplyOnLetter("Loh");
+                Driver.Manage().Window.Maximize();
 
-                MailPageLetterRecipient page3 = new MailPageLetterRecipient(Driver);*/               
+                Driver.Navigate().GoToUrl("https://mail.ru");
+                MailLoginPage page1 = new MailLoginPage(Driver);
+                page1.LoginToMail("DevTask9@mail.ru", "1D2e3v4T5@6s7k89").StartWritingLetter().SendLetter("devtask9@rambler.ru", "message");
+                
+                /*Driver.Navigate().GoToUrl("https://mail.rambler.ru");
+                RamblerLoginPage page2 = new RamblerLoginPage(Driver);
+                page2.LoginToRambler("DevTask9", "DevTask9").ChooseUnreadLetter("devtask9@mail.ru").ReplyToLetter("Loh");*/
+
+                //MailLetterRecipientPage page3 = new MailLetterRecipientPage(Driver);
             }
             catch(Exception ex)
             {

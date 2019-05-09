@@ -5,7 +5,7 @@ namespace DevTask9
     /// <summary>
     /// Class for logging
     /// </summary>
-    class RamblerPageLogin
+    public class RamblerLoginPage
     {
         private IWebDriver Driver { get; set; }
         private IWebElement Login { get; set; }
@@ -17,18 +17,9 @@ namespace DevTask9
         /// Constructor initializes properties
         /// </summary>
         /// <param name="driver">WebDriver</param>
-        public RamblerPageLogin(IWebDriver driver)
+        public RamblerLoginPage(IWebDriver driver)
         {
             this.Driver = driver;
-        }
-
-        /// <summary>
-        /// Goes to the start page of rambler
-        /// </summary>
-        public void GoToLoginPage()
-        {
-            this.Driver.Navigate().GoToUrl("https://mail.rambler.ru");
-            this.Driver.Manage().Window.Maximize();
         }
 
         /// <summary>
@@ -37,7 +28,7 @@ namespace DevTask9
         /// <param name="login">Account login</param>
         /// <param name="password">Account password</param>
         /// <returns>Rambler main page</returns>
-        public RamblerPageMain LoginToRambler(string login, string password)
+        public RamblerMainPage LoginToRambler(string login, string password)
         {
             this.Driver.SwitchTo().Frame(this.Driver.FindElement(By.XPath("//iframe"), 10));
             this.Login = this.Driver.FindElement(By.XPath("//input[@name = 'login']"), 10);
@@ -46,7 +37,7 @@ namespace DevTask9
             this.Password.SendKeys(password);
             this.CheckBox = this.Driver.FindElement(By.XPath("//span[@class = 'rui-Checkbox-fake']"), 10);
 
-            if (this.CheckBox.Selected)
+            if (!this.CheckBox.Selected)
             {
                 this.CheckBox.Click();
             }
@@ -54,7 +45,7 @@ namespace DevTask9
             this.LoginButton = this.Driver.FindElement(By.XPath("//span[@class = 'rui-Button-content']"), 10);
             this.LoginButton.Submit();
 
-            return new RamblerPageMain(this.Driver);
+            return new RamblerMainPage(this.Driver);
         }
     }
 }

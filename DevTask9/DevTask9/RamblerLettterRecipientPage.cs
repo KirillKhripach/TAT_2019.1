@@ -5,7 +5,7 @@ namespace DevTask9
     /// <summary>
     /// Class for reading letter
     /// </summary>
-    class RamblerPageLettterRecipient
+    public class RamblerLettterRecipientPage
     {
         private IWebDriver Driver { get; set; }
         private IWebElement TextField { get; set; }
@@ -15,7 +15,7 @@ namespace DevTask9
         /// Constructor initializes properties
         /// </summary>
         /// <param name="driver">WebDriver</param>
-        public RamblerPageLettterRecipient(IWebDriver driver)
+        public RamblerLettterRecipientPage(IWebDriver driver)
         {
             this.Driver = driver;
         }

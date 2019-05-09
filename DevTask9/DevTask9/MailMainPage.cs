@@ -5,7 +5,7 @@ namespace DevTask9
     /// <summary>
     /// Class to start writing a letter
     /// </summary>
-    class MailPageMain
+    public class MailMainPage
     {
         private IWebDriver Driver { get; set; }
         private IWebElement LetterButton { get; set; }
@@ -14,7 +14,7 @@ namespace DevTask9
         /// Constructor initializes properties
         /// </summary>
         /// <param name="driver">WebDriver</param>
-        public MailPageMain(IWebDriver driver)
+        public MailMainPage(IWebDriver driver)
         {
             this.Driver = driver;
         }
@@ -23,12 +23,12 @@ namespace DevTask9
         /// Clicks to start writing a letter button
         /// </summary>
         /// <returns>Mail letter sender page</returns>
-        public MailPageLetterSender StartWritingLetter()
+        public MailLetterSenderPage StartWritingLetter()
         {
             this.LetterButton = this.Driver.FindElement(By.XPath("//span[contains(text(), 'Написать письмо')]"), 10);
             this.LetterButton.Click();
 
-            return new MailPageLetterSender(this.Driver);
+            return new MailLetterSenderPage(this.Driver);
         }
     }
 }

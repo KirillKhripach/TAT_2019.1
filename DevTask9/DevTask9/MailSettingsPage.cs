@@ -5,7 +5,7 @@ namespace DevTask9
     /// <summary>
     /// Class for mail settings
     /// </summary>
-    class MailPageSettings
+    public class MailSettingsPage
     {
         private IWebDriver Driver { get; set; }
         private IWebElement Nickname { get; set; }
@@ -15,7 +15,7 @@ namespace DevTask9
         /// Constructor initializes properties
         /// </summary>
         /// <param name="driver">WebDriver</param>
-        public MailPageSettings(IWebDriver driver)
+        public MailSettingsPage(IWebDriver driver)
         {
             this.Driver = driver;
         }

@@ -5,7 +5,7 @@ namespace DevTask9
     /// <summary>
     /// Class to start writing a letter
     /// </summary>
-    class RamblerPageMain
+    public class RamblerMainPage
     {
         private IWebDriver Driver { get; set; }
         private IWebElement ChooserUnreadLetter { get; set; }
@@ -14,7 +14,7 @@ namespace DevTask9
         /// Constructor initializes properties
         /// </summary>
         /// <param name="driver">WebDriver</param>
-        public RamblerPageMain(IWebDriver driver)
+        public RamblerMainPage(IWebDriver driver)
         {
             this.Driver = driver;
         }
@@ -24,12 +24,12 @@ namespace DevTask9
         /// </summary>
         /// <param name="sender">Who send letter</param>
         /// <returns>Rambler letter recipient page</returns>
-        public RamblerPageLettterRecipient ChooseUnreadLetter(string sender)
+        public RamblerLettterRecipientPage ChooseUnreadLetter(string sender)
         {
             this.ChooserUnreadLetter = this.Driver.FindElement(By.XPath($"//div[@class = 'AutoMaillistItem-root-1n AutoMaillistItem-unseen-ad']//span[contains(@title, '{sender}')]"), 10);
             this.ChooserUnreadLetter.Click();
 
-            return new RamblerPageLettterRecipient(this.Driver);
+            return new RamblerLettterRecipientPage(this.Driver);
         }
     }
 }
