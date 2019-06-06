@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ArrayOfCurrency xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Currency>
+    <Name>1 USD</Name>
+    <ExchangeRate>2.0880</ExchangeRate>
+  </Currency>
+  <Currency>
+    <Name>1 EUR</Name>
+    <ExchangeRate>2.3550</ExchangeRate>
+  </Currency>
+  <Currency>
+    <Name>100 RUB</Name>
+    <ExchangeRate>3.2130</ExchangeRate>
+  </Currency>
+  <Currency>
+    <Name>100 UAH</Name>
+    <ExchangeRate>7.0000</ExchangeRate>
+  </Currency>
+  <Currency>
+    <Name>10 PLN</Name>
+    <ExchangeRate>5.3600</ExchangeRate>
+  </Currency>
+</ArrayOfCurrency>
