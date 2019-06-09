@@ -1,14 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DevTask3
 {
+    /// <summary>
+    /// Contains entry point to the program
+    /// Creates team according to choosen criterion
+    /// </summary>
     class EntryPoint
     {
         /// <summary>
-        /// Entry point
+        /// Entry point to the program
+        /// Creates criterion chooser, gets employees according to choosen criterion
+        /// Displays necessary employees
         /// </summary>
-        /// <param name="args">The command line arguments</param>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             try
