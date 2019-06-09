@@ -7,6 +7,8 @@ namespace DevTask3
     /// </summary>
     class CriterionChooser
     {
+        Optimizer optimizer;
+
         /// <summary>
         /// Chooses criterion according to input data
         /// </summary>
@@ -14,26 +16,31 @@ namespace DevTask3
         public Optimizer Choose()
         {
             Console.WriteLine("Select a criterion to calculate:\n1. Maximum productivity\n2. Minimum cost\n3. Minimum number of employees without juniors");
-            int choice = Int32.Parse(Console.ReadLine());
-            Optimizer optimizer;
+
+            if (!int.TryParse(Console.ReadLine(), out int choice))
+            {
+                throw new Exception("Incorrect input data");
+            }
+
             switch (choice)
             {
                 case 1:
                     Console.WriteLine("Enter the amount of money you have:");
-                    optimizer = new FirstCriterionOptimizer(Int32.Parse(Console.ReadLine()));
+                    this.optimizer = new MaximumProductivityOptimizer(int.Parse(Console.ReadLine()));
                     break;
                 case 2:
                     Console.WriteLine("Enter required productivity:");
-                    optimizer = new SecondCriterionOptimizer(Int32.Parse(Console.ReadLine()));
+                    this.optimizer = new MinimumCostOptimizer(int.Parse(Console.ReadLine()));
                     break;
                 case 3:
                     Console.WriteLine("Enter required productivity:");
-                    optimizer = new ThirdCriterionOptimizer(Int32.Parse(Console.ReadLine()));
+                    this.optimizer = new MinimumCostWithoutJuniorsOptimizer(int.Parse(Console.ReadLine()));
                     break;
                 default:
                     throw new Exception("Incorrect input data");
             }
-            return optimizer;
+
+            return this.optimizer;
         }
     }
 }

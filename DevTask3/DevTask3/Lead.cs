@@ -7,9 +7,8 @@
     {
         public Lead()
         {
-            Salary = 1500;
-            Productivity = 85;
-            Value = (double)Salary / Productivity;
+            this.Salary = 1500;
+            this.Productivity = 85;
         }
     }
 }

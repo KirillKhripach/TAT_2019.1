@@ -9,8 +9,8 @@ namespace DevTask3
     abstract class Optimizer
     {
         protected int CriterionParameter { get; set; }
-        protected List<Employee> employeeQualifications;
-        protected List<Employee> necessaryEmployees;
+        protected List<Employee> EmployeeQualifications { get; set; }
+        protected List<Employee> NecessaryEmployees { get; set; }
 
         /// <summary>
         /// Constructor checks validity of input data
@@ -20,10 +20,13 @@ namespace DevTask3
         public Optimizer(int criterionParameter)
         {
             if (criterionParameter < 0)
+            {
                 throw new Exception("Value must be non-negative");
-            CriterionParameter = criterionParameter;
-            employeeQualifications = new List<Employee>();
-            necessaryEmployees = new List<Employee>();
+            }
+
+            this.CriterionParameter = criterionParameter;
+            this.EmployeeQualifications = new List<Employee>();
+            this.NecessaryEmployees = new List<Employee>();
         }
 
         /// <summary>

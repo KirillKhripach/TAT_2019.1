@@ -47,15 +47,16 @@
     <Compile Include="CriterionChooser.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="FirstCriterionOptimizer.cs" />
+    <Compile Include="MaximumProductivityOptimizer.cs" />
     <Compile Include="Junior.cs" />
     <Compile Include="Lead.cs" />
     <Compile Include="Middle.cs" />
     <Compile Include="Optimizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecondCriterionOptimizer.cs" />
+    <Compile Include="Qualification.cs" />
+    <Compile Include="MinimumCostOptimizer.cs" />
     <Compile Include="Senior.cs" />
-    <Compile Include="ThirdCriterionOptimizer.cs" />
+    <Compile Include="MinimumCostWithoutJuniorsOptimizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

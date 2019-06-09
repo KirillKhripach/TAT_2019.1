@@ -1,55 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DevTask3
 {
-    enum Qualification
-    {
-        Junior,
-        Middle,
-        Senior,
-        Lead
-    }
-
     /// <summary>
     /// Class with data about number of employees
     /// </summary>
     class Company
     {
-        private int numberOfJuniors;
-        private int numberOfMiddles;
-        private int numberOfSeniors;
-        private int numberOfLeads;
+        private readonly int _numberOfJuniors;
+        private readonly int _numberOfMiddles;
+        private readonly int _numberOfSeniors;
+        private readonly int _numberOfLeads;
+        private int[] _necessaryEmployees;
 
         /// <summary>
         /// Constructor initializes number of employees
         /// </summary>
         public Company()
         {
-            numberOfJuniors = 10;
-            numberOfMiddles = 8;
-            numberOfSeniors = 6;
-            numberOfLeads = 4;
+            this._numberOfJuniors = 10;
+            this._numberOfMiddles = 8;
+            this._numberOfSeniors = 6;
+            this._numberOfLeads = 4;
         }
 
         /// <summary>
         /// Gets list of employees according to given criterion
         /// </summary>
         /// <param name="optimizer">Criterion</param>
-        /// <returns>Optimized list of employees</returns>
-        public List<Employee> GetEmployees(Optimizer optimizer)
+        public void GetEmployees(Optimizer optimizer)
         {
-            return optimizer.Optimize();
+            this._necessaryEmployees = new int[Enum.GetNames(typeof(Qualification)).Length];
+
+            foreach (Employee employee in optimizer.Optimize())
+            {
+                switch (employee.GetType().Name)
+                {
+                    case "Lead":
+                        this._necessaryEmployees[(int)Qualification.Lead]++;
+                        break;
+                    case "Senior":
+                        this._necessaryEmployees[(int)Qualification.Senior]++;
+                        break;
+                    case "Middle":
+                        this._necessaryEmployees[(int)Qualification.Middle]++;
+                        break;
+                    case "Junior":
+                        this._necessaryEmployees[(int)Qualification.Junior]++;
+                        break;
+                }
+            }
         }
 
         /// <summary>
         /// Checks for sufficiency of employees 
         /// </summary>
-        /// <param name="employees">Array of amount of employees</param>
-        public void CheckForSufficiency(int[] employeesAmount)
+        public void CheckForSufficiency()
         {
-            if (employeesAmount[(int)Qualification.Junior] > numberOfJuniors || employeesAmount[(int)Qualification.Middle] > numberOfMiddles
-                || employeesAmount[(int)Qualification.Senior] > numberOfSeniors || employeesAmount[(int)Qualification.Lead] > numberOfLeads)
+            if (this._necessaryEmployees[(int)Qualification.Junior] > this._numberOfJuniors || this._necessaryEmployees[(int)Qualification.Middle] > this._numberOfMiddles
+                || this._necessaryEmployees[(int)Qualification.Senior] > this._numberOfSeniors || this._necessaryEmployees[(int)Qualification.Lead] > this._numberOfLeads)
             {
                 Console.WriteLine("The company can not provides so many employees");
             }
@@ -62,40 +71,13 @@ namespace DevTask3
         /// <summary>
         /// Displays optimized list of employees
         /// </summary>
-        /// <param name="employees">Optimized list of employees</param>
-        /// <returns>Array of amount of employees</returns>
-        public int[] DisplayOptimizedList(List<Employee> employees)
+        public void DisplayNecessaryEmployees()
         {
-            int[] employeesAmount = new int[Enum.GetNames(typeof(Qualification)).Length];
-            foreach (Employee employee in employees)
-            {
-                if (employee is Lead)
-                {
-                    employeesAmount[(int)Qualification.Lead]++;
-                    continue;
-                }
-                if (employee is Senior)
-                {
-                    employeesAmount[(int)Qualification.Senior]++;
-                    continue;
-                }
-                if (employee is Middle)
-                {
-                    employeesAmount[(int)Qualification.Middle]++;
-                    continue;
-                }
-                if (employee is Junior)
-                {
-                    employeesAmount[(int)Qualification.Junior]++;
-                    continue;
-                }
-            }
             Console.WriteLine("The number of employees you need:");
-            Console.WriteLine($"Junior: {employeesAmount[(int)Qualification.Junior]}");
-            Console.WriteLine($"Middle: {employeesAmount[(int)Qualification.Middle]}");
-            Console.WriteLine($"Senior: {employeesAmount[(int)Qualification.Senior]}");
-            Console.WriteLine($"Lead: {employeesAmount[(int)Qualification.Lead]}");
-            return employeesAmount;
+            Console.WriteLine($"Junior: {this._necessaryEmployees[(int)Qualification.Junior]}");
+            Console.WriteLine($"Middle: {this._necessaryEmployees[(int)Qualification.Middle]}");
+            Console.WriteLine($"Senior: {this._necessaryEmployees[(int)Qualification.Senior]}");
+            Console.WriteLine($"Lead: {this._necessaryEmployees[(int)Qualification.Lead]}");
         }
     }
 }

@@ -7,9 +7,8 @@
     {
         public Senior()
         {
-            Salary = 1000;
-            Productivity = 55;
-            Value = (double)Salary / Productivity;
+            this.Salary = 1000;
+            this.Productivity = 55;
         }
     }
 }

@@ -7,9 +7,8 @@
     {
         public Junior()
         {
-            Salary = 250;
-            Productivity = 10;
-            Value = (double)Salary / Productivity;
+            this.Salary = 250;
+            this.Productivity = 10;
         }
     }
 }

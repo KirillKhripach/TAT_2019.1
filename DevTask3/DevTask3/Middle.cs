@@ -7,9 +7,8 @@
     {
         public Middle()
         {
-            Salary = 500;
-            Productivity = 25;
-            Value = (double)Salary / Productivity;
+            this.Salary = 500;
+            this.Productivity = 25;
         }
     }
 }

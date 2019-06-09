@@ -7,6 +7,6 @@
     {
         public int Salary { get; protected set; }
         public int Productivity { get; protected set; }
-        public double Value { get; protected set; }
+        public double Value => (double)this.Salary / this.Productivity;
     }
 }

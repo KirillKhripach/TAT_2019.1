@@ -4,25 +4,25 @@ namespace DevTask3
 {
     /// <summary>
     /// Class for optimization
-    /// According to second criterion
+    /// The minimum cost at a fixed productivity
     /// </summary>
-    class SecondCriterionOptimizer : ThirdCriterionOptimizer
+    class MinimumCostOptimizer : MinimumCostWithoutJuniorsOptimizer
     {
         /// <summary>
         /// Constructor calls base constructor
         /// </summary>
-        /// <param name="sum"></param>
-        public SecondCriterionOptimizer(int productivity) : base(productivity) { }
+        /// <param name="productivity">Required productivity</param>
+        public MinimumCostOptimizer(int productivity) : base(productivity) { }
 
         /// <summary>
         /// Creates optimized list of employees
-        /// According to second criterion
+        /// According to the minimum cost at a fixed productivity
         /// Calls base method optimize
         /// </summary>
         /// <returns>Optimized list of employees</returns>
         public override List<Employee> Optimize()
         {
-            employeeQualifications.Add(new Junior());
+            this.EmployeeQualifications.Add(new Junior());
             return base.Optimize();
         }
     }
