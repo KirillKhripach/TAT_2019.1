@@ -10,7 +10,7 @@ namespace DevTask4
     {
         public string URI { get; private set; }
         public PresentationFormat Format { get; private set; }
-        private static List<string> uris = new List<string>() { "maths", "physics", "English" };
+        private readonly List<string> uris = new List<string>() { "maths", "physics", "English" };
 
         /// <summary>
         /// Constructor initializes fields
@@ -18,8 +18,8 @@ namespace DevTask4
         public Presentation()
         {
             Random random = new Random();
-            URI = $"wikipedia.org/wiki/presentations/{uris[random.Next(uris.Count)]}";
-            Format = (PresentationFormat)random.Next(Enum.GetNames(typeof(PresentationFormat)).Length);
+            this.URI = $"wikipedia.org/wiki/presentations/{this.uris[random.Next(this.uris.Count)]}";
+            this.Format = (PresentationFormat)random.Next(Enum.GetNames(typeof(PresentationFormat)).Length);
         }
 
         /// <summary>

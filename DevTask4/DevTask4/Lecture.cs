@@ -12,21 +12,23 @@ namespace DevTask4
         public Presentation LecturePresentation { get; private set; }
         public List<Seminar> Seminars { get; private set; }
         public List<LaboratoryLesson> LaboratoryLessons { get; private set; }
+        private readonly int _textOfLectureMaxLength = 100000;
 
         /// <summary>
         /// Constructor initializes fields
         /// </summary>
         public Lecture()
         {
-            TextOfLecture = "Lecture";
+            this.TextOfLecture = "Lecture";
 
-            if (TextOfLecture != null && TextOfLecture.Length > 100000)
+            if (this.TextOfLecture != null && this.TextOfLecture.Length > this._textOfLectureMaxLength)
             {
                 throw new Exception("Too large text of lecture");
             }
-            LecturePresentation = new Presentation();
-            Seminars = new List<Seminar>() { new Seminar(), new Seminar() };
-            LaboratoryLessons = new List<LaboratoryLesson>() { new LaboratoryLesson(), new LaboratoryLesson() };
+
+            this.LecturePresentation = new Presentation();
+            this.Seminars = new List<Seminar>() { new Seminar(), new Seminar() };
+            this.LaboratoryLessons = new List<LaboratoryLesson>() { new LaboratoryLesson(), new LaboratoryLesson() };
         }
 
         /// <summary>
@@ -36,18 +38,18 @@ namespace DevTask4
         public override object Clone()
         {
             List<Seminar> seminars = new List<Seminar>();
+            List<LaboratoryLesson> laboratoryLessons = new List<LaboratoryLesson>();
+            Presentation presentation = new Presentation(this.LecturePresentation.URI, this.LecturePresentation.Format);
 
-            foreach (Seminar seminar in Seminars)
+            foreach (Seminar seminar in this.Seminars)
             {
                 seminars.Add((Seminar)seminar.Clone());
             }
-            List<LaboratoryLesson> laboratoryLessons = new List<LaboratoryLesson>();
 
-            foreach (LaboratoryLesson laboratoryLesson in LaboratoryLessons)
+            foreach (LaboratoryLesson laboratoryLesson in this.LaboratoryLessons)
             {
                 laboratoryLessons.Add((LaboratoryLesson)laboratoryLesson.Clone());
             }
-            Presentation presentation = new Presentation(LecturePresentation.URI, LecturePresentation.Format);
 
             return new Lecture
             {

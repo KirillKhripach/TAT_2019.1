@@ -4,13 +4,15 @@ namespace DevTask4
 {
     /// <summary>
     /// Main class that contains entry point
-    /// Creates new discipline, implements deep cloning and indexator
+    /// The program for a curriculum
     /// </summary>
     class EntryPoint
     {
         /// <summary>
-        /// Entry point
+        /// Entry point to the program
+        /// Creates new discipline, implements deep cloning and indexator
         /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             try

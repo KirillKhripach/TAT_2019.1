@@ -16,9 +16,9 @@ namespace DevTask4
         /// </summary>
         public Seminar()
         {
-            Tasks = new List<string>() { "Find treasure", "Get 200 IQ" };
-            Questions = new List<string>() { "2 + 2 = ?", "Stalin's birth year?" };
-            AnswersToTheQuestions = new List<string>() { "4", "1878" };
+            this.Tasks = new List<string>() { "Find treasure", "Get 200 IQ" };
+            this.Questions = new List<string>() { "2 + 2 = ?", "Stalin's birth year?" };
+            this.AnswersToTheQuestions = new List<string>() { "4", "1878" };
         }
 
         /// <summary>
@@ -28,11 +28,11 @@ namespace DevTask4
         public override object Clone()
         {
             List<string> tasks = new List<string>();
-            tasks.AddRange(Tasks);
+            tasks.AddRange(this.Tasks);
             List<string> questions = new List<string>();
-            questions.AddRange(Questions);
+            questions.AddRange(this.Questions);
             List<string> answersToTheQuestions = new List<string>();
-            answersToTheQuestions.AddRange(AnswersToTheQuestions);
+            answersToTheQuestions.AddRange(this.AnswersToTheQuestions);
 
             return new Seminar
             {

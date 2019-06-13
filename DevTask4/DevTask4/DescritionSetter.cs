@@ -8,7 +8,7 @@ namespace DevTask4
     /// </summary>
     class DescriptionSetter
     {
-        private static List<string> descriptions = new List<string>() { "boring", "interesting", "strange" };
+        private readonly List<string> descriptions = new List<string>() { "boring", "interesting", "strange" };
 
         /// <summary>
         /// Generates random string description
@@ -17,7 +17,8 @@ namespace DevTask4
         public string SetDescription()
         {
             Random random = new Random();
-            return $"Something {descriptions[random.Next(descriptions.Count)]}";
+
+            return $"Something {this.descriptions[random.Next(this.descriptions.Count)]}";
         }
     }
 }

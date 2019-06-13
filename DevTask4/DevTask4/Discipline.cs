@@ -11,6 +11,7 @@ namespace DevTask4
         public Guid UniqueIdentifier { get; private set; }
         public string Description { get; private set; }
         public List<Lecture> Lectures { get; private set; }
+        private readonly int _descriptionMaxLength = 256;
 
         /// <summary>
         /// Indexer to get lectures and its materials
@@ -21,17 +22,18 @@ namespace DevTask4
         {
             get
             {
-                List<Material> materials = new List<Material>() { Lectures[i] };
+                List<Material> materials = new List<Material>() { this.Lectures[i] };
 
-                foreach (Seminar seminar in Lectures[i].Seminars)
+                foreach (Seminar seminar in this.Lectures[i].Seminars)
                 {
                     materials.Add(seminar);
                 }
 
-                foreach (LaboratoryLesson laboratoryLesson in Lectures[i].LaboratoryLessons)
+                foreach (LaboratoryLesson laboratoryLesson in this.Lectures[i].LaboratoryLessons)
                 {
                     materials.Add(laboratoryLesson);
                 }
+
                 return materials;
             }
         }
@@ -42,14 +44,15 @@ namespace DevTask4
         public Discipline()
         {
             DescriptionSetter description = new DescriptionSetter();
-            Description = description.SetDescription();
+            this.Description = description.SetDescription();
 
-            if (Description != null && Description.Length > 256)
+            if (this.Description != null && this.Description.Length > this._descriptionMaxLength)
             {
                 throw new Exception("Too large description");
             }
-            UniqueIdentifier = Description.SetGuid();
-            Lectures = new List<Lecture>() { new Lecture(), new Lecture() };
+
+            this.UniqueIdentifier = this.Description.SetGuid();
+            this.Lectures = new List<Lecture>() { new Lecture(), new Lecture() };
         }
 
         /// <summary>
@@ -58,7 +61,7 @@ namespace DevTask4
         /// <returns>Description of an entity</returns>
         public override string ToString()
         {
-            return string.IsNullOrEmpty(Description) ? "No description" : $"Description: {Description}";
+            return string.IsNullOrEmpty(this.Description) ? "No description" : $"Description: {this.Description}";
         }
 
         /// <summary>
@@ -72,12 +75,12 @@ namespace DevTask4
             {
                 return false;
             }
-            Discipline discipline = obj as Discipline;
-
-            if (discipline != null)
+            
+            if (obj is Discipline discipline)
             {
-                return (UniqueIdentifier == discipline.UniqueIdentifier);
+                return this.UniqueIdentifier == discipline.UniqueIdentifier;
             }
+
             return false;
         }
 
@@ -89,7 +92,7 @@ namespace DevTask4
         {
             List<Lecture> lecturesCopy = new List<Lecture>();
 
-            foreach (Lecture lecture in Lectures)
+            foreach (Lecture lecture in this.Lectures)
             {
                 lecturesCopy.Add((Lecture)lecture.Clone());
             }

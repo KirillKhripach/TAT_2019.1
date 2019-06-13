@@ -9,6 +9,7 @@ namespace DevTask4
     {
         public Guid UniqueIdentifier { get; protected set; }
         public string Description { get; protected set; }
+        private readonly int _descriptionMaxLength = 256;
 
         /// <summary>
         /// Constructor initializes fields
@@ -16,13 +17,14 @@ namespace DevTask4
         public Material()
         {
             DescriptionSetter description = new DescriptionSetter();
-            Description = description.SetDescription();
+            this.Description = description.SetDescription();
 
-            if (Description != null && Description.Length > 256)
+            if (this.Description != null && this.Description.Length > this._descriptionMaxLength)
             {
                 throw new Exception("Too large description");
             }
-            UniqueIdentifier = Description.SetGuid();
+
+            this.UniqueIdentifier = this.Description.SetGuid();
         }
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace DevTask4
         /// <returns>Description of an entity</returns>
         public override string ToString()
         {
-            return string.IsNullOrEmpty(Description) ? "No description" : $"Description: {Description}";
+            return string.IsNullOrEmpty(this.Description) ? "No description" : $"Description: {this.Description}";
         }
 
         /// <summary>
@@ -45,12 +47,12 @@ namespace DevTask4
             {
                 return false;
             }
-            Material material = obj as Material;
 
-            if (material != null)
+            if (obj is Material material)
             {
-                return (UniqueIdentifier == material.UniqueIdentifier);
+                return this.UniqueIdentifier == material.UniqueIdentifier;
             }
+
             return false;
         }
 
