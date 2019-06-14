@@ -13,9 +13,9 @@ namespace DevTask5
 
         public Point(int x, int y, int z)
         {
-            X = x;
-            Y = y;
-            Z = z;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace DevTask5
         /// <returns>Distance between points</returns>
         public double GetDistance(Point newPoint)
         {
-            return Math.Sqrt(Math.Pow(newPoint.X - X, 2) + Math.Pow(newPoint.Y - Y, 2) + Math.Pow(newPoint.Z - Z, 2));
+            return Math.Sqrt(Math.Pow(newPoint.X - this.X, 2) + Math.Pow(newPoint.Y - this.Y, 2) + Math.Pow(newPoint.Z - this.Z, 2));
         }
     }
 }

@@ -16,12 +16,13 @@ namespace DevTask5
             try
             {
                 List<IFlyable> flyables = new List<IFlyable>() { new Bird(), new Plane(), new SpaceShip() };
+                Point targetPoint = new Point(100, 200, 800);
                 Logger logger = new Logger();
 
                 foreach (IFlyable flyable in flyables)
                 {
                     flyable.ObjectFlewIn += logger.LogFlight;
-                    flyable.FlyTo(new Point(100, 200, 800));
+                    flyable.FlyTo(targetPoint);
                 }
             }
             catch (Exception ex)

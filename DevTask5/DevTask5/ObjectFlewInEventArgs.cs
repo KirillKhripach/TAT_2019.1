@@ -19,9 +19,9 @@ namespace DevTask5
         /// <param name="speed">Final speed of the flight</param>
         public ObjectFlewInEventArgs(double distance, double time, int speed)
         {
-            Distance = distance;
-            Time = time;
-            Speed = speed;
+            this.Distance = distance;
+            this.Time = time;
+            this.Speed = speed;
         }
     }
 }

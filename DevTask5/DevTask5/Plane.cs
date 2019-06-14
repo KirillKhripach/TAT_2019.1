@@ -22,10 +22,10 @@ namespace DevTask5
         /// </summary>
         public Plane()
         {
-            FlySpeed = 200;
-            Acceleration = 10;
-            AccelerationFrequency = 10;
-            StartPoint = new Point();
+            this.FlySpeed = 200;
+            this.Acceleration = 10;
+            this.AccelerationFrequency = 10;
+            this.StartPoint = new Point();
         }
 
         /// <summary>
@@ -34,12 +34,12 @@ namespace DevTask5
         /// <param name="newPoint">New flight point</param>
         public void FlyTo(Point newPoint)
         {
-            if (!StartPoint.Equals(newPoint))
+            if (!this.StartPoint.Equals(newPoint))
             {
-                Distance = StartPoint.GetDistance(newPoint);
-                StartPoint = newPoint;
-                ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
-                Distance = 0;
+                this.Distance = this.StartPoint.GetDistance(newPoint);
+                this.StartPoint = newPoint;
+                this.ObjectFlewIn?.Invoke(this.WhoAmI(), new ObjectFlewInEventArgs(this.Distance, this.GetFlyTime(), this.FlySpeed));
+                this.Distance = 0;
             }
         }
 
@@ -50,17 +50,17 @@ namespace DevTask5
         public double GetFlyTime()
         {
             double flyTime = 0;
-            double distance = Distance;
+            double distance = this.Distance;
 
-            for (; distance > AccelerationFrequency;)
+            for (; distance > this.AccelerationFrequency;)
             {
-                flyTime += (double)AccelerationFrequency / FlySpeed;
-                FlySpeed += Acceleration;
-                distance -= AccelerationFrequency;
+                flyTime += (double)this.AccelerationFrequency / this.FlySpeed;
+                this.FlySpeed += this.Acceleration;
+                distance -= this.AccelerationFrequency;
             }
 
-            flyTime += distance / FlySpeed;
-            FlySpeed += (int)(Acceleration * distance / AccelerationFrequency);
+            flyTime += distance / this.FlySpeed;
+            this.FlySpeed += (int)(this.Acceleration * distance / this.AccelerationFrequency);
 
             return flyTime;
         }

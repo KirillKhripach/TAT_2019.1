@@ -8,16 +8,17 @@ namespace DevTask5
         public Point StartPoint { get; private set; }
         public double Distance { get; private set; }
         public event EventHandler<ObjectFlewInEventArgs> ObjectFlewIn;
+        private readonly int _minSpeed = 1;
+        private readonly int _maxSpeed = 20;
 
         /// <summary>
         /// Constructor initializes fields
-        /// Random speed up to 20 km/h
         /// Starting point (0, 0, 0)
         /// </summary>
         public Bird()
         {
-            FlySpeed = new Random().Next(1, 20);
-            StartPoint = new Point();
+            this.FlySpeed = new Random().Next(this._minSpeed, this._maxSpeed);
+            this.StartPoint = new Point();
         }
 
         /// <summary>
@@ -26,12 +27,12 @@ namespace DevTask5
         /// <param name="newPoint">New flight point</param>
         public void FlyTo(Point newPoint)
         {
-            if (!StartPoint.Equals(newPoint))
+            if (!this.StartPoint.Equals(newPoint))
             {
-                Distance = StartPoint.GetDistance(newPoint);
-                StartPoint = newPoint;
-                ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
-                Distance = 0;
+                this.Distance = this.StartPoint.GetDistance(newPoint);
+                this.StartPoint = newPoint;
+                this.ObjectFlewIn?.Invoke(this.WhoAmI(), new ObjectFlewInEventArgs(this.Distance, this.GetFlyTime(), this.FlySpeed));
+                this.Distance = 0;
             }
         }
 
@@ -41,7 +42,7 @@ namespace DevTask5
         /// <returns>Time of flight</returns>
         public double GetFlyTime()
         {
-            return Distance / FlySpeed;
+            return this.Distance / this.FlySpeed;
         }
 
         /// <summary>

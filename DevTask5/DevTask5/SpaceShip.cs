@@ -14,13 +14,13 @@ namespace DevTask5
 
         /// <summary>
         /// Constructor initializes fields
-        /// Starting speed 8000 km/h = 8000 * 3600 km/s
+        /// Starting speed 8000 km/s = 8000 * 3600 km/h
         /// Starting point (0, 0, 0)
         /// </summary>
         public SpaceShip()
         {
-            FlySpeed = 8000 * 3600;
-            StartPoint = new Point();
+            this.FlySpeed = 8000 * 3600;
+            this.StartPoint = new Point();
         }
 
         /// <summary>
@@ -29,12 +29,12 @@ namespace DevTask5
         /// <param name="newPoint">New flight point</param>
         public void FlyTo(Point newPoint)
         {
-            if (!StartPoint.Equals(newPoint))
+            if (!this.StartPoint.Equals(newPoint))
             {
-                Distance = StartPoint.GetDistance(newPoint);
-                StartPoint = newPoint;
-                ObjectFlewIn?.Invoke(WhoAmI(), new ObjectFlewInEventArgs(Distance, GetFlyTime(), FlySpeed));
-                Distance = 0;
+                this.Distance = this.StartPoint.GetDistance(newPoint);
+                this.StartPoint = newPoint;
+                this.ObjectFlewIn?.Invoke(this.WhoAmI(), new ObjectFlewInEventArgs(this.Distance, this.GetFlyTime(), this.FlySpeed));
+                this.Distance = 0;
             }
         }
 
@@ -44,7 +44,7 @@ namespace DevTask5
         /// <returns>Time of flight</returns>
         public double GetFlyTime()
         {
-            return Distance / FlySpeed;
+            return this.Distance / this.FlySpeed;
         }
 
         /// <summary>
