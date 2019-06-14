@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cars>
+  <car>
+    <brand>Chevrolet</brand>
+    <model>Silverado</model>
+    <count>6</count>
+    <price>90000</price>
+  </car>
+  <car>
+    <brand>Toyota</brand>
+    <model>Tacoma</model>
+    <count>11</count>
+    <price>80000</price>
+  </car>
+  <car>
+    <brand>Ford</brand>
+    <model>F-250</model>
+    <count>2</count>
+    <price>40000</price>
+  </car>
+</cars>
