@@ -9,7 +9,6 @@
         CountAll,
         AveragePrice,
         AveragePriceType,
-        Execute,
-        Exit
+        Execute
     }
 }

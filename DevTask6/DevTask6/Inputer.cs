@@ -13,8 +13,8 @@ namespace DevTask6
         /// <returns>Chosen command</returns>
         public CatalogCommands GetCommand()
         {
-            Console.WriteLine("Enter command(1-6):\n" + "1. Count types\n" + "2. Count all\n"
-                    + "3. Average price\n" + "4. Average price type\n" + "5. Execute\n" + "6. Exit");
+            Console.WriteLine("Enter command(1-5):\n" + "1. Count types\n" + "2. Count all\n"
+                    + "3. Average price\n" + "4. Average price type\n" + "5. Execute");
 
             if (!int.TryParse(Console.ReadLine(), out int input))
             {

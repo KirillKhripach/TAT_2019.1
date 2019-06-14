@@ -10,7 +10,8 @@ namespace DevTask6
     /// </summary>
     class CarGetter
     {
-        private static CarGetter _instance;
+        private static volatile CarGetter _instance;
+        private static object _syncRoot = new object();
         private XDocument XDoc { get; set; }
 
         /// <summary>
@@ -30,9 +31,15 @@ namespace DevTask6
         {
             if (_instance == null)
             {
-                _instance = new CarGetter();
+                lock (_syncRoot)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new CarGetter();
+                    }
+                }
             }
-            
+
             return _instance;
         }
 

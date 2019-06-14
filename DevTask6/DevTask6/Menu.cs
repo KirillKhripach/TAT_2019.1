@@ -51,11 +51,6 @@ namespace DevTask6
                         entry = false;
                         this.Command = null;
                         continue;
-                    case CatalogCommands.Exit:
-                        entry = false;
-                        this.Command = null;
-                        this.ExecuteCommands = null;
-                        continue;
                     default:
                         Console.WriteLine("Incorrect command");
                         continue;
