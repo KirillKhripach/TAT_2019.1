@@ -1,26 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DevTask6
 {
     /// <summary>
-    /// Class for executing commands with car catalog
+    /// Class for executing commands with car catalogs
     /// </summary>
     class Menu
     {
-        public CarCatalog Catalog { get; private set; }
         private ICommand Command { get; set; }
+        private Action ExecuteCommands { get; set; }
+        public List<CarCatalog> Catalogs { get; private set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
-        /// <param name="carCatalog">Catalog of cars</param>
-        public Menu(CarCatalog carCatalog)
+        /// <param name="carCatalog">List of catalogs</param>
+        public Menu(List<CarCatalog> catalogs)
         {
-            this.Catalog = carCatalog;
+            this.Catalogs = catalogs;
         }
 
         /// <summary>
-        /// Executes command according to input data
+        /// Executes commands according to input data
         /// </summary>
         public void Display()
         {
@@ -28,33 +30,36 @@ namespace DevTask6
             Inputer inputer = new Inputer();
 
             while (entry)
-            {     
+            {
                 switch (inputer.GetCommand())
                 {
                     case CatalogCommands.CountTypes:
-                        this.Command = new CountTypesCommand(this.Catalog);
+                        this.Command = new CountTypesCommand(this.Catalogs[inputer.ChooseCarType(this.Catalogs.Count)]);
                         break;
                     case CatalogCommands.CountAll:
-                        this.Command = new CountAllCommand(this.Catalog);
+                        this.Command = new CountAllCommand(this.Catalogs[inputer.ChooseCarType(this.Catalogs.Count)]);
                         break;
                     case CatalogCommands.AveragePrice:
-                        this.Command = new AveragePriceCommand(this.Catalog);
+                        this.Command = new AveragePriceCommand(this.Catalogs[inputer.ChooseCarType(this.Catalogs.Count)]);
                         break;
                     case CatalogCommands.AveragePriceType:
+                        var catalog = this.Catalogs[inputer.ChooseCarType(this.Catalogs.Count)];
                         Console.WriteLine("Enter car brand:");
-                        this.Command = new AveragePriceTypeCommand(this.Catalog, Console.ReadLine());
+                        this.Command = new AveragePriceTypeCommand(catalog, Console.ReadLine());
                         break;
-                    case CatalogCommands.Exit:
+                    case CatalogCommands.Execute:
                         entry = false;
                         this.Command = null;
-                        break;
+                        continue;
                     default:
                         Console.WriteLine("Incorrect command");
                         continue;
                 }
 
-                this.Command?.Execute();
+                this.ExecuteCommands += this.Command.Execute;
             }
+
+            this.ExecuteCommands?.Invoke();
         }
     }
 }

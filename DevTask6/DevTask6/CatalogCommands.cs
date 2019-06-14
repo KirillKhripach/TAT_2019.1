@@ -1,5 +1,5 @@
 ﻿namespace DevTask6
-{     
+{
     /// <summary>
     /// Enum available commands
     /// </summary>
@@ -9,6 +9,6 @@
         CountAll,
         AveragePrice,
         AveragePriceType,
-        Exit
+        Execute
     }
 }

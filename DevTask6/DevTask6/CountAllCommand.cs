@@ -3,14 +3,14 @@
 namespace DevTask6
 {
     /// <summary>
-    /// Сlass for counting cars method
+    /// Class for counting cars method
     /// </summary>
     class CountAllCommand : ICommand
     {
         private CarCatalog Catalog { get; set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
         /// <param name="carCatalog">Catalog of cars</param>
         public CountAllCommand(CarCatalog carCatalog)

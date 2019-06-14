@@ -3,7 +3,7 @@
 namespace DevTask6
 {
     /// <summary>
-    /// Сlass for counting average price method for a specific brand
+    /// Class for counting average price method for a specific brand
     /// </summary>
     class AveragePriceTypeCommand : ICommand
     {
@@ -11,7 +11,7 @@ namespace DevTask6
         private string Brand { get; set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
         /// <param name="carCatalog">Catalog of cars</param>
         /// <param name="brand">Brand for counting</param>

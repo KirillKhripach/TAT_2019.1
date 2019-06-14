@@ -3,14 +3,14 @@
 namespace DevTask6
 {
     /// <summary>
-    /// Сlass for counting average price method
+    /// Class for counting average price method
     /// </summary>
     class AveragePriceCommand : ICommand
     {
         private CarCatalog Catalog { get; set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
         /// <param name="carCatalog">Catalog of cars</param>
         public AveragePriceCommand(CarCatalog carCatalog)

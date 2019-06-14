@@ -5,17 +5,17 @@ using System.Linq;
 namespace DevTask6
 {
     /// <summary>
-    /// Class for list of cars and methods that give information about it
+    /// Class for collection of cars and methods that give information about it
     /// </summary>
     class CarCatalog
     {
-        public List<Car> Cars { get; private set; }
+        public IEnumerable<Car> Cars { get; private set; }
 
         /// <summary>
-        /// Constructor initializes fields
+        /// Constructor initializes properties
         /// </summary>
         /// <param name="cars">List of cars</param>
-        public CarCatalog(List<Car> cars)
+        public CarCatalog(IEnumerable<Car> cars)
         {
             this.Cars = cars;
         }
