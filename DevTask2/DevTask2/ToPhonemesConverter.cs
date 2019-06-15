@@ -8,7 +8,7 @@ namespace DevTask2
     /// <summary>
     /// Class for converting word to phonemes
     /// </summary>
-    class ToPhonemesConverter
+    public class ToPhonemesConverter
     {
         public StringBuilder ProcessedString { get; private set; }
         private readonly string _vowelsString = "аиоуыэеёюя";
@@ -38,7 +38,13 @@ namespace DevTask2
         /// <param name="inputString">String for converting</param>
         public ToPhonemesConverter(string inputString)
         {
-            string lowerString = (inputString ?? throw new Exception("String is null")).ToLower();
+            string lowerString = inputString.ToLower() ?? throw new NullReferenceException("String is null");
+
+            if (lowerString.Replace("+", string.Empty).Length < 2)
+            {
+                throw new Exception("The word should contains at least two letters");
+            }
+
             CyrillicCheker cyrillicCheker = new CyrillicCheker(lowerString);
             cyrillicCheker.Check();
             ValidationCheker validationCheker = new ValidationCheker(lowerString);
@@ -64,7 +70,7 @@ namespace DevTask2
         /// <summary>
         /// Converts vowels to phonemes according to previous letter
         /// </summary>
-        public void VowelToPhonemes()
+        private void VowelToPhonemes()
         {
             foreach (KeyValuePair<string, string> keyValue in this._vowelConverter)
             {
@@ -88,7 +94,7 @@ namespace DevTask2
         /// Converts letter 'о' to phonemes according to previous letter,
         /// Count of vowels and stress
         /// </summary>
-        public void OLetterToPhonemes()
+        private void OLetterToPhonemes()
         {
             bool impactLetter = this.ProcessedString.ToString().Contains("о+");
             int vowelsCount = 0;
@@ -129,7 +135,7 @@ namespace DevTask2
         /// <summary>
         /// Converts '+', 'ь' and 'ъ' to phonemes
         /// </summary>
-        public void OtherSymbolsToPhonemes()
+        private void OtherSymbolsToPhonemes()
         {
             this.ProcessedString.Replace("+", string.Empty);
             this.ProcessedString.Replace('ь', '\'');
@@ -140,7 +146,7 @@ namespace DevTask2
         /// Converts ringing consonants to phonemes according to their position
         /// On the end of word or before deaf letters
         /// </summary>
-        public void RingingToPhonemes()
+        private void RingingToPhonemes()
         {
             foreach (KeyValuePair<string, string> keyValue in this._ringingToDeafConverter)
             {
@@ -167,7 +173,7 @@ namespace DevTask2
         /// Converts deaf consonants to phonemes according to their position
         /// Before ringing letters
         /// </summary>
-        public void DeafToPhonemes()
+        private void DeafToPhonemes()
         {
             foreach (KeyValuePair<string, string> keyValue in this._ringingToDeafConverter)
             {

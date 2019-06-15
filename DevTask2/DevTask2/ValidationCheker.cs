@@ -6,21 +6,24 @@ namespace DevTask2
     /// <summary>
     /// Class for validating input string
     /// </summary>
-    class ValidationCheker
+    public class ValidationCheker
     {
         public string StringToCheck { get; private set; }
         private readonly string _vowelsString = "аиоуыэеёюя";
-        private int _plusCount = 0;
-        private int _yoCount = 0;
-        private int _vowelsCount = 0;
+        private int _plusCount;
+        private int _yoCount;
+        private int _vowelsCount;
 
         /// <summary>
-        /// Constructor initializes properties
+        /// Constructor initializes properties and fields
         /// </summary>
         /// <param name="inputString">String to check</param>
         public ValidationCheker(string inputString)
         {
-            this.StringToCheck = inputString;
+            this.StringToCheck = inputString.ToLower() ?? throw new NullReferenceException("String is null");
+            this._plusCount = 0;
+            this._yoCount = 0;
+            this._vowelsCount = 0;
         }
 
         /// <summary>

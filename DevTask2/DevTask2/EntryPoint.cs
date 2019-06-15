@@ -17,12 +17,13 @@ namespace DevTask2
         {
             try
             {
-                //Checks for 1 word and 2 symbols at least without '+'  
-                if (args.Length != 1 || args[0].Replace("+", string.Empty).Length < 2)
+                // Checks for 1 word
+                if (args.Length != 1)
                 {
-                    throw new Exception("The word should be one and contains at least two letters");
+                    throw new Exception("The word should be one");
                 }
 
+                // Takes first word from command line(args[0])
                 ToPhonemesConverter toPhonemesConverter = new ToPhonemesConverter(args[0]);
                 Console.WriteLine(toPhonemesConverter.ConvertToPhenomes());
             }
