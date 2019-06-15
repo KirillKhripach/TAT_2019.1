@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CyrillicChekerTest.cs" />
     <Compile Include="ToPhonemesConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationChekerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -6,7 +6,7 @@ namespace DevTask2
     /// <summary>
     /// Class for checking that string is contains from Cyrillic letters
     /// </summary>
-    class CyrillicCheker
+    public class CyrillicCheker
     {
         public string StringToCheck { get; private set; }
 
@@ -16,7 +16,7 @@ namespace DevTask2
         /// <param name="inputString"></param>
         public CyrillicCheker(string inputString)
         {
-            this.StringToCheck = inputString;
+            this.StringToCheck = inputString.ToLower() ?? throw new NullReferenceException("String is null");
         }
 
         /// <summary>

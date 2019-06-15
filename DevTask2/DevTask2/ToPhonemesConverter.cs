@@ -38,7 +38,13 @@ namespace DevTask2
         /// <param name="inputString">String for converting</param>
         public ToPhonemesConverter(string inputString)
         {
-            string lowerString = (inputString ?? throw new NullReferenceException("String is null")).ToLower();            
+            string lowerString = inputString.ToLower() ?? throw new NullReferenceException("String is null");
+
+            if (lowerString.Replace("+", string.Empty).Length < 2)
+            {
+                throw new Exception("The word should contains at least two letters");
+            }
+
             CyrillicCheker cyrillicCheker = new CyrillicCheker(lowerString);
             cyrillicCheker.Check();
             ValidationCheker validationCheker = new ValidationCheker(lowerString);
@@ -52,12 +58,6 @@ namespace DevTask2
         /// <returns>Converted string</returns>
         public string ConvertToPhenomes()
         {
-            //Checks for 2 symbols at least without '+'  
-            if (this.ProcessedString.ToString().Replace("+", string.Empty).Length < 2)
-            {
-                throw new Exception("The word should contains at least two letters");
-            }
-
             this.VowelToPhonemes();
             this.OLetterToPhonemes();
             this.OtherSymbolsToPhonemes();

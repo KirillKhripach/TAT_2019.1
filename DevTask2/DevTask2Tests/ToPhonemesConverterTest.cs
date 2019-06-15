@@ -11,7 +11,7 @@ namespace DevTask2Tests
         [TestCase("ёлка", "йолка")]
         [TestCase("смерть", "см'эрт'")]
         [TestCase("моло+тьба", "малод'ба")]
-        public void Convert_Word_ReturnsPhonemes(string inputString, string expectedString)
+        public void ConvertWordTest(string inputString, string expectedString)
         {
             ToPhonemesConverter converter = new ToPhonemesConverter(inputString);
             var actual = converter.ConvertToPhenomes();
@@ -20,10 +20,9 @@ namespace DevTask2Tests
 
         [TestCase("а+")]
         [TestCase("я")]
-        public void Convert_LessThenTwoLetters_ThrowsArgumentOutOfRangeException(string inputString)
+        public void ConvertLessThenTwoLettersTest(string inputString)
         {
-            ToPhonemesConverter converter = new ToPhonemesConverter(inputString);
-            Assert.Throws<Exception>(() => converter.ConvertToPhenomes());
+            Assert.Throws<Exception>(() => new ToPhonemesConverter(inputString));
         }
 
         [TestCase("мёди+к")]
@@ -31,23 +30,23 @@ namespace DevTask2Tests
         [TestCase("мо+ло+ко")]
         [TestCase("почта")]
         [TestCase("клмн")]
-        public void Convert_IncorrectWord_ThrowsException(string inputString)
+        public void ConvertIncorrectWordTest(string inputString)
         {
             Assert.Throws<Exception>(() => new ToPhonemesConverter(inputString));
         }
 
         [TestCase("brain")]
         [TestCase("word")]
-        [TestCase("#53i")]
-        public void Convert_NonCyrillicSymbols_ThrowsException(string inputString)
+        [TestCase("#53")]
+        public void ConvertNonCyrillicSymbolsTest(string inputString)
         {
             Assert.Throws<Exception>(() => new ToPhonemesConverter(inputString));
         }
 
-        [TestCase]
-        public void Convert_Null_ThrowsNullReferenceException()
+        [TestCase(null)]
+        public void ConvertNullTest(string inputString)
         {
-            Assert.Throws<NullReferenceException>(() => new ToPhonemesConverter(null));
+            Assert.Throws<NullReferenceException>(() => new ToPhonemesConverter(inputString));
         }
     }
 }
