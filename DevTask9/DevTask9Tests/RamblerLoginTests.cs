@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using DevTask9;
+using DevTask9.Rambler;
 
 namespace DevTask9Tests
 {
@@ -9,31 +10,32 @@ namespace DevTask9Tests
     public class RamblerLoginTests
     {
         private IWebDriver Driver { get; set; }
+        private IWebElement ErrorMessage => this.Driver.FindElement(By.XPath("//div[@class = 'rui-InputStatus-message']"), 10);
 
         [SetUp]
-        public void OpenBrowser()
+        public void OpenRamblerLoginPage()
         {
             this.Driver = new ChromeDriver();
             this.Driver.Navigate().GoToUrl("https://mail.rambler.ru");
         }
 
         [TestCase("DevTask9@rambler.ru", "DevTask9")]
-        public void Login_CorrectInput_ElementDisplayed(string login, string password)
+        public void LoginCorrectInputTest(string login, string password)
         {
-            RamblerLoginPage ramblerPage = new RamblerLoginPage(this.Driver);
+            var ramblerPage = new LoginPage(this.Driver);
             ramblerPage.LoginToRambler(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//span[contains(text(), 'Написать')]"), 3).Displayed);
+            Assert.IsTrue(new MainPage(this.Driver).UnreadLetters.Displayed);
         }
 
         [TestCase("pochta", "parol")]
         [TestCase("", "")]
         [TestCase("pochta", "")]
         [TestCase("", "parol")]
-        public void Login_IncorrectInput_ErrorDisplayed(string login, string password)
+        public void LoginIncorrectInputTest(string login, string password)
         {
-            RamblerLoginPage ramblerPage = new RamblerLoginPage(this.Driver);
+            var ramblerPage = new LoginPage(this.Driver);
             ramblerPage.LoginToRambler(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//div[@class = 'rui-InputStatus-message']"), 3).Displayed);
+            Assert.IsTrue(this.ErrorMessage.Displayed);
         }
 
         [TearDown]

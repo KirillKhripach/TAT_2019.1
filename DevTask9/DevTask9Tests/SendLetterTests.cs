@@ -1,7 +1,6 @@
-﻿/*using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using DevTask9;
 
 namespace DevTask9Tests
 {
@@ -12,31 +11,37 @@ namespace DevTask9Tests
         private string MailPassword { get; set; } = "1D2e3v4T5@6s7k89";
         private string RamblerAdress { get; set; } = "DevTask9@rambler.ru";
         private string RamblerPassword { get; set; } = "DevTask9";
+        private string _message = "Gimme some nickname";
+        private string _nickname = "Goodman";
 
         [SetUp]
-        public void OpenBrowser()
+        public void OpenBrowserAndSendMessage()
         {
             this.Driver = new ChromeDriver();
             this.Driver.Navigate().GoToUrl("https://mail.ru");
+            new DevTask9.Mail.LoginPage(this.Driver).LoginToMail(this.MailAdress, this.MailPassword).StartWritingLetter().SendLetter(this.RamblerAdress, this._message);
         }
 
-        [TestCase("DevTask9@mail.ru", "1D2e3v4T5@6s7k89")]
-        public void Login_CorrectInput_NoErrorDisplayed(string login, string password)
+        [Test]
+        public void SendLetter()
         {
-            MailLoginPage mailPage = new MailLoginPage(this.Driver);
-            mailPage.LoginToMail(login, password);
-            Assert.IsTrue(!this.Driver.FindElement(By.XPath("//div[@id = 'mailbox:error']"), 3).Displayed);
+            this.Driver.Navigate().GoToUrl("https://mail.rambler.ru");
+            var ramblerPage = new DevTask9.Rambler.LoginPage(this.Driver).LoginToRambler(this.RamblerAdress, this.RamblerPassword).ChooseUnreadLetter(this.MailAdress.ToLower());
+            Assert.AreEqual(ramblerPage.GetMessageFromLetter(), this._message);
         }
 
-        [TestCase("pochta", "parol")]
-        [TestCase("", "")]
-        [TestCase("pochta", "")]
-        [TestCase("", "parol")]
-        public void Login_IncorrectInput_ErrorDisplayed(string login, string password)
+        [Test]
+        public void ReplyToLetterAndChangeNickname()
         {
-            MailLoginPage mailPage = new MailLoginPage(this.Driver);
-            mailPage.LoginToMail(login, password);
-            Assert.IsTrue(this.Driver.FindElement(By.XPath("//div[@id = 'mailbox:error']"), 3).Displayed);
+            this.Driver.Navigate().GoToUrl("https://mail.rambler.ru");
+            new DevTask9.Rambler.LoginPage(this.Driver).LoginToRambler(this.RamblerAdress, this.RamblerPassword).ChooseUnreadLetter(this.MailAdress.ToLower()).ReplyToLetter(this._nickname);
+
+            this.Driver.Navigate().GoToUrl("https://e.mail.ru/messages/inbox/");
+            var mailPage = new DevTask9.Mail.MainPage(this.Driver).ChooseUnreadLetter(this.RamblerAdress.ToLower());
+            string nickname = mailPage.GetMessageFromLetter();
+            mailPage.GoToSettings().ChangeUserName(nickname);
+
+            Assert.AreEqual(mailPage.GoToSettings().GetUserName(), this._nickname);
         }
 
         [TearDown]
@@ -46,4 +51,3 @@ namespace DevTask9Tests
         }
     }
 }
-*/

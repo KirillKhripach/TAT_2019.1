@@ -4,27 +4,38 @@ using OpenQA.Selenium.Chrome;
 
 namespace DevTask9
 {
+    /// <summary>
+    /// Contains entry point to the program
+    /// Exchanges message between mail and rambler
+    /// </summary>
     class EntryPoint
     {
+        /// <summary>
+        /// Sends message from mail to rambler
+        /// Replies to received message
+        /// Changes nickname of mail according to replied message
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             try
             {
-                IWebDriver Driver;
-                Driver = new ChromeDriver();
-                Driver.Manage().Window.Maximize();
+                IWebDriver driver;
+                driver = new ChromeDriver();
+                driver.Manage().Window.Maximize();
 
-                /*Driver.Navigate().GoToUrl("https://mail.ru");
-                MailLoginPage page1 = new MailLoginPage(Driver);
-                page1.LoginToMail("DevTask9@mail.ru", "1D2e3v4T5@6s7k89").StartWritingLetter().SendLetter("devtask9@rambler.ru", "message");*/
+                driver.Navigate().GoToUrl("https://mail.ru");
+                new Mail.LoginPage(driver).LoginToMail("devtask9@mail.ru", "1D2e3v4T5@6s7k89").StartWritingLetter().SendLetter("devtask9@rambler.ru", "Gimme some nickname");
                 
-                Driver.Navigate().GoToUrl("https://mail.rambler.ru");
-                RamblerLoginPage page2 = new RamblerLoginPage(Driver);
-                page2.LoginToRambler("DevTask9", "DevTask9").ChooseUnreadLetter("devtask9@mail.ru").ReplyToLetter("Loh");
-
-                //MailLetterRecipientPage page3 = new MailLetterRecipientPage(Driver);
+                driver.Navigate().GoToUrl("https://mail.rambler.ru");
+                new Rambler.LoginPage(driver).LoginToRambler("devtask9@rambler.ru", "DevTask9").ChooseUnreadLetter("devtask9@mail.ru").GetMessageFromLetter();//.ReplyToLetter("Goodman");
+                
+                driver.Navigate().GoToUrl("https://e.mail.ru/messages/inbox/");
+                var messagePage = new Mail.MainPage(driver).ChooseUnreadLetter("devtask9@rambler.ru");
+                string nickname = messagePage.GetMessageFromLetter();
+                messagePage.GoToSettings().ChangeUserName(nickname);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
